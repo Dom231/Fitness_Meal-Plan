@@ -42,12 +42,12 @@ cursor: pointer;
 &.active {
     color: #eeeee4;
 }`
-
+// Hamburger Icon
 export const Bars = styled(FaBars)`
 display: none;
-color: #fff;
 
-@media screen and (max-width: 900px) {
+
+@media screen and (max-width: 950px) {
     display: block;
     position: absoulte;
     top: 0;
@@ -55,6 +55,7 @@ color: #fff;
     transform: translate(-100%, 75%);
     font-size: 2.5rem;
     cursor: pointer;
+    color: #fff;
    
 
 }`

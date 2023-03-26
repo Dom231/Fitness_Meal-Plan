@@ -6,6 +6,7 @@ import './bootstrap.min.css'
 // import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Navbar from './components/Navbar';
 
+
 import Home from './pages/Home';
 import Meallist from './pages/Meallist';
 import Profile from './pages/Profile';
@@ -26,7 +27,7 @@ function App() {
         <Route path='/me' element={<Profile/>} />
         <Route path='/signup' element={<Signup/>} />
         <Route path='/aboutus' element={<Aboutus/>} />
-      
+        
         </Routes>
         <Footer/>
     </Router>

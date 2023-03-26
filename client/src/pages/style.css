@@ -1,6 +1,6 @@
 .bgimage{
     background-image: url(../images/background.JPG);
-    background-repeat: no-repeat;
+    background-repeat: strech;
     background-size: 100%;
     /* filter: blur(2px); */
 }
@@ -15,4 +15,11 @@
 .cardimg{
     background-size: 50%;
 }
+
+@media screen and (max-height: 768px){
+body{height: 800px;}
+}
+;
+    
+
 

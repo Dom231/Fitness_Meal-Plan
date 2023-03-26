@@ -1,7 +1,8 @@
 import React from 'react';
+import Howitworks from '../components/Howitworks';
 // import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
+// import Card from 'react-bootstrap/Card';
+// import CardGroup from 'react-bootstrap/CardGroup';
 import './style.css';
 
 
@@ -9,13 +10,13 @@ function Home() {
   return (
     // <div className='bgimage' style={{backgroundImage: `url("https://source.unsplash.com/random/?salads")`}}>
     <div className='bgimage'>
-    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh'}}>
+    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70vh'}}>
     <h1 className='bgtext'>Welcome to Fitness meal Planner!</h1></div>
-    <div>
-    <h2 className='bgtext' >How It<a href="/"><span className='highlight'>Works</span></a></h2></div>
-    <CardGroup>
+    {/* <div> */}
+    {/* <h2 className='bgtext' >How It<a href="/"><span className='highlight'>Works</span></a></h2></div> */}
+    {/* <CardGroup>
       <Card style={{ width: '5rem', margin: '1rem' }}> 
-        <Card.Img variant="top" src={require('../images/calculate.JPG')} width={300} height={800} />
+        <Card.Img variant="top" src={require('../images/calculate.png')}  />
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
@@ -26,7 +27,7 @@ function Home() {
        
       </Card>
       <Card style={{ width: '25rem', margin: '1rem' }}>
-        <Card.Img variant="top" src={require('../images/mealplan.jpg')} width={300} height={800}/>
+        <Card.Img variant="top" src={require('../images/mealplan.png')} />
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
@@ -37,7 +38,7 @@ function Home() {
      
       </Card>
       <Card style={{ width: '25rem', margin: '1rem', height: '25rem' }} >
-        <Card.Img variant="top" src={require('../images/healthy.jpg')} width={300} height={800}/>
+        <Card.Img variant="top" src={require('../images/healthy.png')}/>
         <Card.Body>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
@@ -48,8 +49,8 @@ function Home() {
         </Card.Body>
        
       </Card>
-    </CardGroup>
-   
+    </CardGroup> */}
+   <Howitworks />
     </div>
   
   )
