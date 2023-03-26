@@ -1,0 +1,18 @@
+.bgimage{
+    background-image: url(../images/background.JPG);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /* filter: blur(2px); */
+}
+
+.bgtext{
+    font-size: 80px;
+    color: black;
+    text-align: center;
+    background-color: white;
+}
+
+.cardimg{
+    background-size: 50%;
+}
+
