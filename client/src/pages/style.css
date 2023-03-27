@@ -1,0 +1,25 @@
+.bgimage{
+    background-image: url(../images/background.JPG);
+    background-repeat: strech;
+    background-size: 100%;
+    /* filter: blur(2px); */
+}
+
+.bgtext{
+    font-size: 80px;
+    color: black;
+    text-align: center;
+    background-color: white;
+}
+
+.cardimg{
+    background-size: 50%;
+}
+
+@media screen and (max-height: 768px){
+body{height: 800px;}
+}
+;
+    
+
+
