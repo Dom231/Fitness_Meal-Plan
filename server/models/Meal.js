@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const mealSchema = new Schema({
+    api_id: {
+        type: Number,
+        require: true
+    },
     title: {
         type: String,
         require: true
