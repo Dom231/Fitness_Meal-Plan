@@ -1,6 +1,6 @@
 [
       {
-        "name": "Brian Kernighan",
+        "username": "BrianKernighan",
         "email": "bkernighan@techfriends.dev",
         "password": "password01",
         "calorie_goal": 2000,
@@ -11,7 +11,7 @@
         "fat_goal": 50
       },
       {
-        "name": "Max Kanat-Alexander",
+        "username": "MaxKanat-Alexander",
         "email": "mkanatalexander@techfriends.dev",
         "password": "password02",
         "calorie_goal": 2000,
@@ -22,7 +22,7 @@
         "fat_goal": 50
       },
       {
-        "name": "Amiko",
+        "username": "Amiko",
         "email": "amiko@techfriends.dev",
         "password": "password03",
         "calorie_goal": 2000,
