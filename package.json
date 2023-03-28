@@ -21,6 +21,7 @@
         "dotenv": "^16.0.3",
         "mdb-react-ui-kit": "^5.1.0",
         "react-bootstrap": "^2.7.2",
+        "react-favicon": "^2.0.3",
         "react-icons": "^4.8.0",
         "react-router-dom": "^6.9.0",
         "react-scroll": "^1.8.9",
