@@ -4,7 +4,7 @@ const typeDefs = gql `
 
 
 
-type Meal: {
+type Meal {
     _id: ID
     title: String
     calories: Int
@@ -52,7 +52,7 @@ type Query{
 
 type Mutation {
     login(email: String!, password: String): Auth
-    adddProfile(username: String!, email: String!, password: String!): Auth
+    addProfile(username: String!, email: String!, password: String!): Auth
 }
 
 `

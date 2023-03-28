@@ -1,0 +1,35 @@
+[
+      {
+        "name": "Brian Kernighan",
+        "email": "bkernighan@techfriends.dev",
+        "password": "password01",
+        "calorie_goal": 2000,
+        "body_weight": 150,
+        "height": 66,
+        "protein_goal": 100,
+        "carb_goal": 200,
+        "fat_goal": 50
+      },
+      {
+        "name": "Max Kanat-Alexander",
+        "email": "mkanatalexander@techfriends.dev",
+        "password": "password02",
+        "calorie_goal": 2000,
+        "body_weight": 150,
+        "height": 66,
+        "protein_goal": 100,
+        "carb_goal": 200,
+        "fat_goal": 50
+      },
+      {
+        "name": "Amiko",
+        "email": "amiko@techfriends.dev",
+        "password": "password03",
+        "calorie_goal": 2000,
+        "body_weight": 150,
+        "height": 66,
+        "protein_goal": 100,
+        "carb_goal": 200,
+        "fat_goal": 50
+      }
+    ]
