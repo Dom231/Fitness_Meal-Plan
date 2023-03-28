@@ -1,37 +1,89 @@
-import React from 'react';
-import { Nav, NavLink, Bars, NavMenu} from './IndexElement';
+import React, {useState} from 'react';
+
+
+import { FaBars, FaTimes } from 'react-icons/fa';
+import {IconContext } from 'react-icons/lib';
+import { Nav,NavbarContainer, NavItemButton ,NavLogo, HamburgerIcon, NavMenu, NavItem, NavLink } from './IndexElement';
+import {Button} from '../../globalStyles';
 
 const Navbar = () => {
+
+const [click, setClick] = useState(false);
+
+const handleClick = () => setClick(!click);
+
   return (
     <>
-   <Nav>
+    <IconContext.Provider value={{color: '#fff'}}>
+
    
-    <NavLink to='/'>
-       <h1 style={{color: 'white'}}>Fitness Meal Planner</h1>
+      <Nav>
+<NavbarContainer >
+  <NavLogo to='/'>
+   
+    Fitness Meal Planner
+  </NavLogo>
+  <HamburgerIcon onClick={handleClick}>
+    {click ? <FaTimes /> : <FaBars />}
+  </HamburgerIcon>
+  </NavbarContainer>
+
+<NavMenu onClick={handleClick} click={click}>
+  <NavItem>
+    <NavLink to='/' >
+      Home
     </NavLink>
-    <Bars />
-    <NavMenu>
-        <NavLink to="/home" activeStyle> 
-            Home 
-        </NavLink>
-        <NavLink to="/meallist" activeStyle>
-            Meal Plan
-        </NavLink>
-        <NavLink to="/me" activeStyle>
-            Profile
-        </NavLink>
-        <NavLink to="/signup" activeStyle>
-            Sign Up
-        </NavLink>
-        <NavLink to="/aboutus" activeStyle>
-           About Us
-        </NavLink>
-       
-    </NavMenu>
-   
-   </Nav>
+  </NavItem>
+
+
+
+  <NavItem>
+    <NavLink to='/meallist' >
+      Meal Plan
+    </NavLink>
+  </NavItem>
+
+
+
+  <NavItem>
+    <NavLink to='/me' >
+      Profile
+    </NavLink>
+  </NavItem>
+
+
+
+  <NavItem>
+    <NavLink to='/signup' >
+      Sign Up
+    </NavLink>
+  </NavItem>
+
+
+
+  <NavItem>
+    <NavLink to='/aboutus' >
+      About Us
+    </NavLink>
+  </NavItem>
+
+
+
+  <NavItem>
+    <NavLink to='/calculator' >
+      Calculator
+    </NavLink>
+  </NavItem>
+  <NavItemButton>
+      <Button>SIGN UP</Button>
+    
+  </NavItemButton>
+</NavMenu>
+
+      </Nav>
+      </IconContext.Provider>
     </>
   )
 }
 
-export default Navbar;
+export default Navbar

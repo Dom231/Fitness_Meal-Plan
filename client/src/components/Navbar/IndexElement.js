@@ -1,77 +1,134 @@
 import styled from 'styled-components';
-import { NavLink as Link} from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
+// import { FaMagento} from 'react-icons/fa';
+import {Link} from 'react-router-dom';
+
+import { Container } from'../../globalStyles';
+
 
 export const Nav = styled.nav`
-background: #000;
+background-color: black;
 height: 150px;
-display: flex;
+display:flex;
 justify-content: space-between;
-padding: 3rem;
-z-index: 10;
+align-items: center;
 font-size: 2rem;
-white-space: nowrap;
 position: sticky;
-top:0;
+top: 0;
+z-index: 999;
+`;
 
-@media screen and (max-width: 960px){
-    transition: 0.8s all ease;
+export const NavbarContainer = styled(Container)`
+display:flex;
+justify-content: space-between;
+height: 80px;
+
+${Container}
+`;
+
+export const NavLogo = styled(Link)`
+color: #fff;
+justify-self: flex-start;
+cursor: pointer;
+text-decoration: none;
+font-size: 4rem;
+display: flex;
+align-items: center;
+&:hover {
+   
+    transition: all 0.3s ease-out;
+    background:#cbcf5d;
 }
+    
 `
 
-// export const NavbarContainer = styled.div`
-// display:flex;
-// justify-content: space-between;
-// height: 80px;
-// z-index: 1;
-// width: 100%;
-// padding: 0 15px;
-// max-width: 1100px;`
 
-
-
-export const NavLink = styled(Link)`
-color: #fff;
-display:flex;
-
-text-decoration: none;
-padding: 0 2rem;
-height: 100%;
-cursor: pointer;
-
-&.active {
-    color: #eeeee4;
-}`
-// Hamburger Icon
-export const Bars = styled(FaBars)`
+export const HamburgerIcon = styled.div`
 display: none;
 
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 960px){
     display: block;
-    position: absoulte;
+    position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 75%);
-    font-size: 2.5rem;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
     cursor: pointer;
-    color: #fff;
+}`;
+
+export const NavMenu = styled.ul`
+display:flex;
+align-items:center;
+list-style: none;
+text-align: center;
+
+@media screen and (max-width:960px){
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+
+    top: 80px;
+//show the hamburger true or false
+    right:${({click} ) => (click ? 0 : '-100%')};
+    opacity: 1;
+    transition: all 0.5s ease;
+    background: #101522;
+
+}
+`
+export const NavItem = styled.li`
+height: 80px;
+border-bottom: 2px  transparent;
+
+&:hover {
+    border-bottom: 2px ;
    
+    transition: all 0.3s ease-out;
+    background: #fff;
 
-}`
+}
 
-export const NavMenu = styled.div`
+@media screen and (max-width: 960px){
+    width: 100%;
+
+   &:hover {
+        border: none;
+    }
+}
+`
+
+export const NavLink = styled(Link)`
+color: #fff;
 display: flex;
+align-items: center;
+padding: 0.5rem 1rem;
+text-decoration: none;
+height: 100%;
 
-margin-right: -1rem;
-font-size: 2rem;
-white-space: nowrap;
+@media screen and (max-width:960px){
 
+    padding: 2rem;
+    text-align: center;
+    width:100%;
+    display: table;
 
-@media screen and (max-width: 1000px){
-    display:none;
+    &:hover {
+        color: #4459f7;
+        transition: all 0.3s ease;
+    }
     
+}
+`
+
+export const NavItemButton = styled.li`
+@media screen and(max-width: 960px){
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
 }`
 
 
-//navbtn will be here if we use login link
