@@ -17,8 +17,8 @@ const Navbar = () => {
         <NavLink to="/meallist" activeStyle>
             Meal Plan
         </NavLink>
-        <NavLink to="/me" activeStyle>
-            Profile
+        <NavLink to="/calculator" activeStyle>
+            Calculator
         </NavLink>
         <NavLink to="/signup" activeStyle>
             Sign Up

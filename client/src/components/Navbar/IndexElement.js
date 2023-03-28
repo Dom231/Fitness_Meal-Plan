@@ -18,7 +18,6 @@ top:0;
     transition: 0.8s all ease;
 }
 `
-
 // export const NavbarContainer = styled.div`
 // display:flex;
 // justify-content: space-between;
@@ -27,8 +26,6 @@ top:0;
 // width: 100%;
 // padding: 0 15px;
 // max-width: 1100px;`
-
-
 
 export const NavLink = styled(Link)`
 color: #fff;
@@ -66,7 +63,6 @@ display: flex;
 margin-right: -1rem;
 font-size: 2rem;
 white-space: nowrap;
-
 
 @media screen and (max-width: 1000px){
     display:none;
