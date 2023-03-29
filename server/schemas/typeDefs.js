@@ -51,17 +51,17 @@ type Auth {
 type Query{ 
     me : Profile
     meals: [Meal]
-    meal(_id: String): [Meal]
+    meal(_id: String!): [Meal]
 
 }
 
 type Mutation {
     login(email: String!, password: String): Auth
     addProfile(username: String!, email: String!, password: String!): Auth
-        # addDayPlan(title: String!, breakfast: Meal!, lunch: Meal!, Dinner: Meal!): Profile
-    # addMeal(title: String!, calories: Int!, fat: Int!, protein: Int!, carbs: Int!, image: String! ):Profile
-    # removeDayPlan(_id: ID :Profile
-    # removeMeal(api_id: Int!):Profile
+    addDayPlan(title: String!, breakfast: Meal!, lunch: Meal!, Dinner: Meal!): Profile
+    addMeal(title: String!, calories: Int!, fat: Int!, protein: Int!, carbs: Int!, image: String! ):Profile
+    removeDayPlan(_id: ID!):Profile
+     removeMeal(api_id: Int!):Profile
 }
 
 `
