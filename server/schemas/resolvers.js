@@ -15,6 +15,15 @@ const  resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
           },
+          meals: async (parent, args) => {
+            return Meal.find({})
+          }, 
+          meal: async (parent, {_id}) => {
+            const params = _id ? {_id} : {};
+            return Meal.find(params)
+          }
+
+
         
     }, 
 
