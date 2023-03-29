@@ -20,8 +20,7 @@ const profileSchema = new Schema({
       minlength: 5,
     },
     calorie_goal: {
-        type: Number,
-        required: true
+        type: Number
     },
     body_weight: {
         type: Number,

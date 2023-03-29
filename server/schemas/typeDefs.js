@@ -6,6 +6,7 @@ const typeDefs = gql `
 
 type Meal {
     _id: ID
+    api_id: String
     title: String
     calories: Int
     fat: Int
@@ -27,6 +28,7 @@ type DayMealPlan {
 type Profile {
     _id: ID
     username: String
+    password: String
     email: String
     calorie_goal: Int
     body_weight: Int
@@ -48,12 +50,20 @@ type Auth {
 
 type Query{ 
     me : Profile
+    meals: [Meal]
+    meal(_id: String!): [Meal]
+
 }
 
 type Mutation {
     login(email: String!, password: String): Auth
     addProfile(username: String!, email: String!, password: String!): Auth
+    addDayPlan(title: String!, breakfast: Meal!, lunch: Meal!, Dinner: Meal!): Profile
+    addMeal(title: String!, calories: Int!, fat: Int!, protein: Int!, carbs: Int!, image: String! ):Profile
+    removeDayPlan(_id: ID!):Profile
+     removeMeal(api_id: Int!):Profile
 }
 
 `
 module.exports = typeDefs;
+

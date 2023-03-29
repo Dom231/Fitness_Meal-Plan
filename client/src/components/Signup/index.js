@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import '../Signup/signup.css';
 // import signup from '../../images/signup.png';
 import { checkPassword, validateEmail } from '../../utils/helpers';
+import { useMutation } from '@apollo/client';
+import { ADD_PROFILE } from '../../utils/mutations';
+import { useNavigate } from 'react-router-dom';  
 
 function Signmeup() {
 
@@ -9,6 +12,8 @@ function Signmeup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [addProfile, {error}] = useMutation(ADD_PROFILE);
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { target } = e;
@@ -24,7 +29,7 @@ function Signmeup() {
         }
     };
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
 
         if (!validateEmail(email) || !userName) {
@@ -37,10 +42,21 @@ function Signmeup() {
             return;
         }
         // alert(`Hello ${userName}`);
+        try {
+            const {data} = await addProfile({
+                variables: {username: userName, email: email, password: password}
+            });
+            
+            setUserName('');
+            setEmail('');
+            setPassword('');
+            navigate("/calculator");
+        } catch (err) {
+            console.error(err);
+        }
+            
 
-        setUserName('');
-        setEmail('');
-        setPassword('');
+        
     };
 
 
@@ -55,7 +71,7 @@ function Signmeup() {
 
             <div className='form-content-right'>
 
-                <form className='form'>
+                <form className='form' onSubmit={handleFormSubmit}>
                     <h1>Don't Have an Account? Sign Up</h1>
 
                     <div className='form-inputs'>
@@ -73,7 +89,7 @@ function Signmeup() {
                     </div>
 
                     <div className='form-inputs'>
-                        <label type='password' className='form-label'>password</label>
+                        <label type='password' className='form-label'>Password</label>
                         <input value={password} onChange={handleInputChange} type='password' className='form-input' name='password' placeholder='Enter your password'>
                         </input>
 
@@ -81,12 +97,12 @@ function Signmeup() {
                     </div>
 
 
-                    <button className='form-input-btn' onClick={handleFormSubmit} type='submit'>Sign Up</button>
+                    <button className='form-input-btn' type='submit'>Sign Up</button>
                     <span className='form-input-login'>Already have an Account? Login <a href="/">Here</a></span>
 
                     {errorMessage && (
                         <div>
-                            <p className='error-text'>{errorMessage}</p>
+                            <p className='error-text'>{errorMessage} Broken</p>
                         </div>)}
                 </form>
 

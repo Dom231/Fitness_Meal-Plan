@@ -3,7 +3,13 @@ import './index.css'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './bootstrap.min.css'
 // Uncomment import statement below after building queries and mutations
-// import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Meallist from './pages/Meallist';
@@ -13,10 +19,14 @@ import Profile from './pages/Profile';
 import Aboutus from './pages/Aboutus';
 
 
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-   
+   <ApolloProvider client={client}>
     <Router>
         <Navbar/>
         <Routes>
@@ -31,6 +41,8 @@ function App() {
         </Routes>
         
     </Router>
+   </ApolloProvider>
+    
     
   );
 }
