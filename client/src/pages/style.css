@@ -1,5 +1,6 @@
 .bgimage{
     background-image: url(../images/background.JPG);
+    background-color: black;
     background-repeat: strech;
     background-size: 100%;
     /* filter: blur(2px); */

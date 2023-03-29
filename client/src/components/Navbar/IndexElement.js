@@ -30,7 +30,7 @@ color: #fff;
 justify-self: flex-start;
 cursor: pointer;
 text-decoration: none;
-font-size: 4rem;
+font-size: 3rem;
 display: flex;
 align-items: center;
 &:hover {

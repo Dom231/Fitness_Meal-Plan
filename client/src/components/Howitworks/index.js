@@ -6,6 +6,8 @@ import {WorkContainer, WorkCard, WorkH1, WorkH2, WorkIcon, WorkP, WorkWrapper } 
 
 const Howitworks = () => {
   return (
+    <>
+    
     <WorkContainer>
       <WorkH1>
         How it Works
@@ -31,7 +33,11 @@ const Howitworks = () => {
         </WorkCard>
 
       </WorkWrapper>
-    </WorkContainer>
+ 
+      </WorkContainer>
+
+
+    </>
   )
 }
 

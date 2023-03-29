@@ -3,8 +3,8 @@ import React, {useState} from 'react';
 
 import { FaBars, FaTimes } from 'react-icons/fa';
 import {IconContext } from 'react-icons/lib';
-import { Nav,NavbarContainer, NavItemButton ,NavLogo, HamburgerIcon, NavMenu, NavItem, NavLink } from './IndexElement';
-import {Button} from '../../globalStyles';
+import { Nav,NavbarContainer ,NavLogo, HamburgerIcon, NavMenu, NavItem, NavLink } from './IndexElement';
+// import {Button} from '../../globalStyles';
 
 const Navbar = () => {
 
@@ -20,7 +20,6 @@ const handleClick = () => setClick(!click);
       <Nav>
 <NavbarContainer >
   <NavLogo to='/'>
-   
     Fitness Meal Planner
   </NavLogo>
   <HamburgerIcon onClick={handleClick}>
@@ -74,10 +73,10 @@ const handleClick = () => setClick(!click);
       Calculator
     </NavLink>
   </NavItem>
-  <NavItemButton>
+  {/* <NavItemButton>
       <Button>SIGN UP</Button>
     
-  </NavItemButton>
+  </NavItemButton> */}
 </NavMenu>
 
       </Nav>
