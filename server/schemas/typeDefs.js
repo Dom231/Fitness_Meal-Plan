@@ -6,6 +6,7 @@ const typeDefs = gql `
 
 type Meal {
     _id: ID
+    api_id: String
     title: String
     calories: Int
     fat: Int
@@ -49,8 +50,8 @@ type Auth {
 
 type Query{ 
     me : Profile
-    meals: Meal
-    meal(_id): Meal
+    meals: [Meal]
+    meal(_id: String): [Meal]
 
 }
 
