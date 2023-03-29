@@ -11,7 +11,7 @@ import Calculator from './pages/Calculator';
 import Signup  from './pages/Signup';
 import Profile from './pages/Profile';
 import Aboutus from './pages/Aboutus';
-import Footer from './components/Footer';
+
 
 
 function App() {
@@ -24,12 +24,12 @@ function App() {
         <Route path='/home' element={<Home/>} />
         <Route path='/meallist' element={<Meallist/>} />
         <Route path='/calculator' element={<Calculator/>} />
-        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/me' element={<Profile/>}/>
         <Route path='/signup' element={<Signup/>} />
         <Route path='/aboutus' element={<Aboutus/>} />
         
         </Routes>
-        <Footer/>
+        
     </Router>
     
   );

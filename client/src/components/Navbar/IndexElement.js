@@ -36,7 +36,7 @@ align-items: center;
 &:hover {
    
     transition: all 0.3s ease-out;
-    background:#cbcf5d;
+    
 }
     
 `
@@ -46,13 +46,13 @@ export const HamburgerIcon = styled.div`
 display: none;
 
 
-@media screen and (max-width: 960px){
+@media screen and (max-width: 1000px){
     display: block;
     position: absolute;
     top: 0;
     right: 0;
     transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    font-size: 0.5rem;
     cursor: pointer;
 }`;
 

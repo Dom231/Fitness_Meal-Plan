@@ -51,12 +51,12 @@ const handleClick = () => setClick(!click);
   </NavItem>
 
 
-
+{/* 
   <NavItem>
     <NavLink to='/signup' >
       Sign Up
     </NavLink>
-  </NavItem>
+  </NavItem> */}
 
 
 
