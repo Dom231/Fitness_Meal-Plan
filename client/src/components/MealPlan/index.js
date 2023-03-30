@@ -49,6 +49,8 @@ import React from 'react';
 import { Row, Tabs, Tab} from 'react-bootstrap';
 import './mealindex.css';
 import Breakfast from './Breakfast';
+import Lunch from './Lunch';
+import Dinner from './Dinner';
 
 
 const BTabs = () => {
@@ -62,11 +64,11 @@ const BTabs = () => {
 </Tab>
 
 <Tab eventKey= 'tab-2' title='Lunch'>
-  Tab 2 Content..
+ <Lunch />
 </Tab>
 
 <Tab eventKey= 'tab-3' title='Dinner'>
-  Tab 3 Content..
+  <Dinner />
 </Tab>
         </Tabs>
       </Row>

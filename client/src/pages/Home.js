@@ -20,7 +20,7 @@ function Home() {
       />
     </video>
       <Card.ImgOverlay>
-        <Card.Title style={{fontSize:'3rem', color:'black', textAlign:'center', marginTop:'5%', fontWeight:'bold'}}>WELCOME TO FITNESS MEAL PLANNER
+        <Card.Title style={{fontSize:'5rem', color:'black', textAlign:'center', marginTop:'15%', fontWeight:'bold'}}>WELCOME TO FITNESS MEAL PLANNER
         </Card.Title>
           <Stack gap={4} className="col-md-8">
       <Button variant="primary" style={{fontSize: '1.8rem', marginLeft: '60%', marginRight:'10%', padding:'2rem', borderRadius:'0.5rem'}} onClick={event => window.location.href='/calculator'}>Calculate Your Macros</Button>

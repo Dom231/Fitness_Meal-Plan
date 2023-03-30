@@ -88,7 +88,7 @@ function Login() {
 
 
                <button className='form-input-btn' type='submit'>Login</button>
-               <span className='form-input-login'>Ready to Plan your Meal? Sign Up <a href="/">Here</a></span>
+               <span className='form-input-login'>Ready to Plan your Meal? Sign Up <a href="/signup">Here</a></span>
 
                {errorMessage && (
                    <div>

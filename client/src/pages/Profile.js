@@ -1,13 +1,16 @@
 import React from 'react'
+import Me from '../components/Profile';
 
 import Footer from '../components/Footer'; 
+
 
 function Profile() {
   return (
     <>
-    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh'}}>
-      <h1>Here is your Profile!</h1>
+    <div style={{ height: 'auto'}}>
+<Me />
     </div>
+    
 <Footer />
     </>
      
