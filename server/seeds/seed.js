@@ -17,18 +17,21 @@ db.once('open', async () => {
       .then((res) => res.json())
       .then((data) => data);
 
+      let mealList = []
       await Meal.deleteMany({});
-      await getMeals().then((response) => response.forEach(async (item) => {
-        await Meal.create({
-        api_id: item.id,
-        title: item.title,
-        calories: item.calories,
-        fat: item.fat.slice(0,-1),
-        protein: item.protein.slice(0,-1),
-        carbs: item.carbs.slice(0,-1),
-        image: item.image
-      })}));
+      await getMeals().then(async (response) => {
+        //console.log(response)
+        
+        for (const key in response) {
+          const element = response[key];
+          element.protein=parseInt(element.protein.slice(0,-1));
+          element.fat=parseInt(element.fat.slice(0,-1));
+          element.carbs=parseInt(element.carbs.slice(0,-1));
+          mealList.push(element);
+        }
+        })
 
+      await Meal.create(mealList);
       console.log('all done!');
       process.exit(0);
     } catch (err) {

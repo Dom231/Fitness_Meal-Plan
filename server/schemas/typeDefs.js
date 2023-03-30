@@ -58,7 +58,9 @@ type Query{
 type Mutation {
     login(email: String!, password: String): Auth
     addProfile(username: String!, email: String!, password: String!): Auth
+
     addDayPlan(title: String!, breakfast: MealInput!, lunch: MealInput!, Dinner: MealInput!): Profile
+
     addMeal(title: String!, calories: Int!, fat: Int!, protein: Int!, carbs: Int!, image: String! ):Profile
     removeDayPlan(_id: ID!):Profile
     removeMeal(api_id: Int!):Profile
