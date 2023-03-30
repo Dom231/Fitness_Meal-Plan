@@ -52,6 +52,7 @@ const  resolvers = {
         return { token, user };
       },
 
+
       addMeal: async (parent, {api_id, title, calories, fat, protein, carbs, image}, context) => {
         if(context.user){
           const meal = new Meal({api_id, title, calories, fat, protein, carbs, image});
