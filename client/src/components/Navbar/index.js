@@ -6,6 +6,7 @@ import {IconContext } from 'react-icons/lib';
 import { Nav,NavbarContainer ,NavLogo, HamburgerIcon, NavMenu, NavItem, NavLink } from './IndexElement';
 // import {Button} from '../../globalStyles';
 
+
 const Navbar = () => {
 
 const [click, setClick] = useState(false);
@@ -51,12 +52,12 @@ const handleClick = () => setClick(!click);
   </NavItem>
 
 
-{/* 
+
   <NavItem>
-    <NavLink to='/signup' >
-      Sign Up
+    <NavLink to='/login' >
+    Login
     </NavLink>
-  </NavItem> */}
+  </NavItem>
 
 
 

@@ -27,6 +27,17 @@ Container{
     min-height: 100vh;
 }
 
+.background-video{
+    height: 100%;
+width: 800%;
+
+top: 0;
+padding: none;
+
+}
+
+
+
 
    
 

@@ -91,3 +91,8 @@ font-size: 2rem;
 text-align: center;
 
 `
+export const Carousel = styled.div`
+ width:900px;
+  height:500px;
+  margin: auto;
+`
