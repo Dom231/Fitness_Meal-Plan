@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
-
-
 import { FaBars, FaTimes } from 'react-icons/fa';
 import {IconContext } from 'react-icons/lib';
-import { Nav,NavbarContainer, NavItemButton ,NavLogo, HamburgerIcon, NavMenu, NavItem, NavLink } from './IndexElement';
-import {Button} from '../../globalStyles';
+import { Nav,NavbarContainer ,NavLogo, HamburgerIcon, NavMenu, NavItem, NavLink } from './IndexElement';
+// import {Button} from '../../globalStyles';
 
 const Navbar = () => {
 
@@ -20,7 +18,6 @@ const handleClick = () => setClick(!click);
       <Nav>
 <NavbarContainer >
   <NavLogo to='/'>
-   
     Fitness Meal Planner
   </NavLogo>
   <HamburgerIcon onClick={handleClick}>
@@ -35,15 +32,11 @@ const handleClick = () => setClick(!click);
     </NavLink>
   </NavItem>
 
-
-
   <NavItem>
     <NavLink to='/meallist' >
       Meal Plan
     </NavLink>
   </NavItem>
-
-
 
   <NavItem>
     <NavLink to='/me' >
@@ -51,15 +44,11 @@ const handleClick = () => setClick(!click);
     </NavLink>
   </NavItem>
 
-
-
   <NavItem>
-    <NavLink to='/signup' >
-      Sign Up
+    <NavLink to='/login' >
+    Login
     </NavLink>
   </NavItem>
-
-
 
   <NavItem>
     <NavLink to='/aboutus' >
@@ -67,17 +56,6 @@ const handleClick = () => setClick(!click);
     </NavLink>
   </NavItem>
 
-
-
-  <NavItem>
-    <NavLink to='/calculator' >
-      Calculator
-    </NavLink>
-  </NavItem>
-  <NavItemButton>
-      <Button>SIGN UP</Button>
-    
-  </NavItemButton>
 </NavMenu>
 
       </Nav>

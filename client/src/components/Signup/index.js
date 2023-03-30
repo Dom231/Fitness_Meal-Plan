@@ -6,6 +6,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_PROFILE } from '../../utils/mutations';
 import { useNavigate } from 'react-router-dom';  
 
+
 function Signmeup() {
 
     const [userName, setUserName] = useState('');
@@ -61,6 +62,7 @@ function Signmeup() {
 
 
     return (
+        <>
         <div className='form-container'>
 
             <div className='form-content-left'>
@@ -102,14 +104,15 @@ function Signmeup() {
 
                     {errorMessage && (
                         <div>
-                            <p className='error-text'>{errorMessage} Broken</p>
+                            <h2 className='error-text'><mark>{errorMessage} Broken</mark></h2>
                         </div>)}
                 </form>
 
 
-            </div></div>
-
-
+            </div>
+         </div>
+ 
+</>  
     );
 }
 
