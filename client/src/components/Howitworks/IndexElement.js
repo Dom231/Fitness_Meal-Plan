@@ -84,10 +84,15 @@ export const WorkH2 = styled.h2`
 font-size: 2rem;
 margin-bottom: 10px;
 
-}`
+`
 
 export const WorkP = styled.p`
 font-size: 2rem;
 text-align: center;
 
+`
+export const Carousel = styled.div`
+ width:900px;
+  height:500px;
+  margin: auto;
 `

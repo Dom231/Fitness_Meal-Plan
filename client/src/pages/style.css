@@ -1,7 +1,8 @@
 .bgimage{
     background-image: url(../images/background.JPG);
-    background-repeat: strech;
-    background-size: 100%;
+    background-color: black;
+    background-repeat:no-repeat;
+   
     /* filter: blur(2px); */
 }
 
@@ -19,6 +20,24 @@
 @media screen and (max-height: 768px){
 body{height: 800px;}
 }
-;
+
+Container{
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.background-video{
+    height: 100%;
+width: 800%;
+
+top: 0;
+padding: none;
+
+}
+
+
+
+
    
 

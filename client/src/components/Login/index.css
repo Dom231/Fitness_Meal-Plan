@@ -1,0 +1,124 @@
+.form-container {
+    margin: 10px auto;
+    width: 70%;
+    box-shadow: 0 5px 8px 0;
+    position: relative;
+    border-radius: 10px;
+    height: 1000px;
+    
+  
+
+}
+
+.form-content-right{
+border-radius: 0 10px 10px 0;
+position: relative;
+
+background: linear-gradient(90deg, rgd(40,40,40) 0%, rgb(231, 16, 16) 100%);
+}
+
+.form{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width:80%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form h1{
+    font-size: 3rem;
+    text-align:start;
+    width:80%;
+    margin-bottom: 1rem;
+    
+}
+
+.form-label{
+    display:inline-block;
+    font-size: 2rem;
+    padding: 5px;
+    margin-bottom: 6px;
+    color: #000;
+}
+
+.form-input{
+    
+    padding-left: 10px;
+    margin: 0.4rem 0;
+    height: 4rem;
+    width: 100%;
+    font-size: 1.5rem;
+    border-radius: 10px 10px 10px 10px;
+    border-color: gray;
+}
+
+
+.form-content-left{
+ 
+      border-radius: 10px 0 0 10px;
+      position: relative;
+      display:block;
+}
+
+.form-image{
+    width: 100%;
+    height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.form-input-btn{
+    width:40%;
+    height: 60px;
+    margin-top: 10px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1.5rem;
+    border:none;
+}
+
+.form-input-btn:hover{
+    cursor: pointer;
+    background: linear-gradient(
+        90deg,
+        rgb(212, 157, 36) 0%,
+        rgb(240, 191, 32) 100%
+      );
+    transition: all 0.4s ease-out;
+}
+
+
+.form-inputs{
+    margin-bottom: 4rem;
+    width:80%;
+    height: 10%;
+  
+}
+
+.error-text{
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+
+.form-input-login{
+    font-size: 1.5rem;
+    color: black;
+    margin-top: 10px;
+    width:80%;
+    text-align: center;
+}
+
+.form-input-login a{
+    text-decoration: none;
+    color: #f5a510;
+    font-weight: 600;
+}
+
+

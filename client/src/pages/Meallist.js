@@ -1,9 +1,13 @@
 import React from 'react'
+import Footer from '../components/Footer';
+import MealPlan from '../components/MealPlan';
 
 function Meallist() {
   return (
-    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh'}}>
-      <h1>Here is the list of meals</h1>
+    <div style={{ justifyContent: 'center', alignItems: 'center', height: '90vh', fontSize:'8rem'}}>
+      
+      <MealPlan />
+      <Footer />
     </div>
   )
 }
