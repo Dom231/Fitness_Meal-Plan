@@ -21,6 +21,17 @@ const  resolvers = {
           meal: async (parent, {_id}) => {
             const params = _id ? {_id} : {};
             return Meal.find(params)
+          },
+          mealsFiltered: async (parent, {calories, protein, carbs, fat}) => {
+            return Meal.find({calories: {$gt: calories-200,
+                                         $lt: calories+200},
+                              protein: {$gt: protein-20,
+                                        $lt: protein+20},
+                              carbs: {$gt: carbs-20,
+                                      $lt: carbs+20},
+                              fat: {$gt: fat-20,
+                                    $lt: fat+20}
+            });
           }
 
 
