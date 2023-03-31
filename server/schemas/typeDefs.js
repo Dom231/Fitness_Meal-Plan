@@ -47,7 +47,7 @@ type Profile {
 
 
 type Auth {
-    token: String
+    token: ID!
     user : Profile
 }
 
