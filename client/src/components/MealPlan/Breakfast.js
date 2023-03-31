@@ -6,8 +6,11 @@ import Card from 'react-bootstrap/Card';
 import './mealindex.css';
 import React from 'react';
 import {FaBurn} from 'react-icons/fa';
+
+
 import { useQuery } from '@apollo/client';
 import { QUERY_MEALS } from '../../utils/queries';
+
 
 
 

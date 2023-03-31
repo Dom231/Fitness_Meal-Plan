@@ -5,8 +5,8 @@ import CalculatorForm from '../components/Calculator';
 function Cal_calc() {
   return (
 <>
-<h1>Sample Calculator</h1>
-<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70vh'}}>
+
+<div style={{ height: 'auto'}}>
 
 <CalculatorForm />
  </div>
