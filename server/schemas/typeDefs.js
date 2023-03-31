@@ -52,6 +52,7 @@ type Query{
     me : Profile
     meals: [Meal]
     meal(_id: String!): [Meal]
+    mealsFiltered(calories: Int, protein: Int, carbs: Int, fat: Int): [Meal]
 
 }
 
