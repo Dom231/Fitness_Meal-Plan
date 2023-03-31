@@ -28,6 +28,15 @@ const profileSchema = new Schema({
     height: {
         type: Number,
     },
+    age: {
+        type: Number
+    },
+    activityLevel: {
+      type: String
+    },
+    loseMaintainGain: {
+      type: String
+    },
     protein_goal: {
         type: Number
     },

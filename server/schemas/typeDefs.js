@@ -33,6 +33,9 @@ type Profile {
     calorie_goal: Int
     body_weight: Int
     height: Int
+    age: Int
+    activityLevel: String
+    loseMaintainGain: String
     protein_goal: Int
     carb_goal: Int
     fat_goal: Int

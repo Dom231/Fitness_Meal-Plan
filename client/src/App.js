@@ -19,6 +19,8 @@ import Profile from './pages/Profile';
 import Aboutus from './pages/Aboutus';
 import Login from './components/Login';
 
+import { MealProvider } from './utils/MealContext';
+
 
 
 const client = new ApolloClient({
@@ -29,7 +31,8 @@ const client = new ApolloClient({
 function App() {
   return (
    <ApolloProvider client={client}>
-    <Router>
+    <MealProvider>
+      <Router>
         <Navbar/>
         <Routes>
         <Route path='/' element={<Home/>} />
@@ -40,13 +43,10 @@ function App() {
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<Signup/>} />
         <Route path='/aboutus' element={<Aboutus/>} />
-        
         </Routes>
-       
-    </Router>
+      </Router>
+    </MealProvider>
    </ApolloProvider>
-    
-    
   );
 }
 

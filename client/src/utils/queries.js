@@ -13,3 +13,21 @@ export const QUERY_MEALS = gql`
         }
     }
 `
+
+export const QUERY_ME = gql`
+    query meProfile {
+        me {
+            username
+            calorie_goal
+            body_weight
+            height
+            age
+            activityLevel
+            loseMaintainGain
+            protein_goal
+            carb_goal
+            fat_goal
+            day_plans
+        }
+    }
+`
