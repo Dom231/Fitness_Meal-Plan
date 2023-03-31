@@ -21,6 +21,17 @@ const  resolvers = {
           meal: async (parent, {_id}) => {
             const params = _id ? {_id} : {};
             return Meal.find(params)
+          },
+          mealsFiltered: async (parent, {calories, protein, carbs, fat}) => {
+            return Meal.find({calories: {$gt: calories-200,
+                                         $lt: calories+200},
+                              protein: {$gt: protein-20,
+                                        $lt: protein+20},
+                              carbs: {$gt: carbs-20,
+                                      $lt: carbs+20},
+                              fat: {$gt: fat-20,
+                                    $lt: fat+20}
+            });
           }
 
 
@@ -52,6 +63,7 @@ const  resolvers = {
         return { token, user };
       },
 
+
       addMeal: async (parent, {api_id, title, calories, fat, protein, carbs, image}, context) => {
         if(context.user){
           const meal = new Meal({api_id, title, calories, fat, protein, carbs, image});
@@ -68,21 +80,21 @@ const  resolvers = {
         throw new AuthenticationError('Not logged in');
       }, 
       
-      addDayPlan: async (parent, {title, breakfast, lunch, dinner}, context) => {
-        if(context.user){
-          const dayPlan = new DayMealPlan({ title, breakfast, lunch, dinner});
+      // addDayPlan: async (parent, {title, breakfast, lunch, dinner}, context) => {
+      //   if(context.user){
+      //     const dayPlan = new DayMealPlan({ title, breakfast, lunch, dinner});
       
-          await Profile.findOneAndUpdate({_id:context.user._id}, {
-            $addToSet: { day_plans: dayPlan} 
-          }, 
-          { new: true}
-          ); 
+      //     await Profile.findOneAndUpdate({_id:context.user._id}, {
+      //       $addToSet: { day_plans: dayPlan} 
+      //     }, 
+      //     { new: true}
+      //     ); 
       
-          return dayPlan
-        }
+      //     return dayPlan
+      //   }
       
-        throw new AuthenticationError('Not logged in');
-      },
+      //   throw new AuthenticationError('Not logged in');
+      // },
       
       removeMeal: async (parent, args, context) => {
         if(context.user){
@@ -98,7 +110,7 @@ const  resolvers = {
         throw new AuthenticationError('You need to be logged in!');
       }, 
       
-      removeDatPlan: async (parent, args, context) => {
+      removeDayPlan: async (parent, args, context) => {
         if(context.user){
           const dayPlan = await Profile.findOneAndUpdate(
             {_id: context.user._id}, 
