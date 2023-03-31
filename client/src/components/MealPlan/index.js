@@ -51,9 +51,25 @@ import './mealindex.css';
 import Breakfast from './Breakfast';
 import Lunch from './Lunch';
 import Dinner from './Dinner';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../../utils/queries';
 
 
 const BTabs = () => {
+  const {loading, data} = useQuery(
+    QUERY_ME
+  )
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  // if (!data?.calorie_goal) {
+  //   return (
+  //     <h1>
+  //       Please use the fitness goal calculator to see meals! <a href="/calculator">Calculator</a>
+  //     </h1>
+  //   );
+  // }
   return (
     < >
       <Row className='tabs'>
