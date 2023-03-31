@@ -7,10 +7,6 @@ import './mealindex.css';
 import React from 'react';
 import {FaBurn} from 'react-icons/fa';
 
-
-
-
-
 const Breakfast = () => {
    
     const FoodInfo = [
