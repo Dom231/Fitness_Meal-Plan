@@ -100,7 +100,9 @@ const Breakfast = () => {
     const {loading, data} = useQuery(
         QUERY_MEALS,
         {
-            variables: {}
+            variables: {
+
+            }
         }
     )
     FoodInfo = data;  
@@ -140,7 +142,7 @@ const Breakfast = () => {
     if (loading){
         return <div>Loading...</div>;
     }
-    return <div className='grid'>{renderList(FoodInfo)}</div>;
+    return <div className='grid'>{renderList(FoodInfo)}<h1>here we go!</h1></div>;
 
 };
 
