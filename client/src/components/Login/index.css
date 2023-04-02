@@ -5,12 +5,11 @@
     position: relative;
     border-radius: 10px;
     height: 1000px;
-    
-  
 
 }
 
 .form-content-right{
+   
 border-radius: 0 10px 10px 0;
 position: relative;
 

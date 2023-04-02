@@ -10,7 +10,7 @@ function Me() {
 
   return (
     <>
-    <h2>Hello {}</h2>
+   
     <Card className="text-center" style={{border:'none'}}>
     <Card.Img  src={welcome} />
       <Card.Body style={{color:'white', backgroundColor:'black', padding:'1rem'}}>

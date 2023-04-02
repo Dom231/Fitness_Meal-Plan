@@ -1,12 +1,4 @@
-.tabs {
-    border-radius: 0;
-    color: #000;
-    font-size: 2rem;
-    padding: 1rem;
-    
- 
-    
-}
+
 
 .box{
     
@@ -44,7 +36,7 @@
     min-height:100%;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+   
    
   }
 
@@ -61,6 +53,10 @@
   .macros{
     padding: 0.2rem;
     font-size: 1.5rem;
-    text-align:end;
+
     font-style: italic;
+  }
+
+  .flex-column{
+    font-size: 2rem;
   }

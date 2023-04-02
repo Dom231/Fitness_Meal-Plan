@@ -1,0 +1,24 @@
+.card-info{
+display: flex;
+margin-bottom: 20%;
+margin-left: 20%;
+margin-right: 20%;
+margin-top: 2%;
+padding: 2%;
+}
+
+.form-inputs{
+    font-size: 1.5rem;
+    border-radius: 2px;
+   
+}
+
+button{
+
+margin-left: 40%;
+}
+
+.macro{
+    font-size: 1.5rem;
+    padding-top: 5%;
+}

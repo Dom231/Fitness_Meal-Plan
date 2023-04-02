@@ -1,53 +1,51 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import './cal.css';
 
 function Calculator() {
   return (
     <div>
 
-    <Card style={{marginLeft:'50rem', marginRight:'50rem', marginTop:'1rem'}}>
-    {/* <Card.Img  style={{imageResolution:'2rem'}} src={cal} /> */}
+    <Card className='card-info'   >
     <Card.Title style={{textAlign:'center'}}><h1> Calculate your Macros </h1></Card.Title>
-  
-      <ListGroup >
-        <ListGroup.Item><div className='form-inputs'>
+       <div className='form-inputs'>
                         <label className='form-label'>Age</label>
-                        <input type='number' className='form-input' name='Age' placeholder='Enter your Age' >
-                        </input>
-      
-                        <label className='form-label'>Height </label>
-                        <input type='number' className='form-input' name='Height' placeholder='Enter your height in Inches' >
-                        </input>
-                    
-                        <label className='form-label'>Weight</label>
-                        <input type='number' className='form-input' name='Height' placeholder='Enter your Weight in lbs' >
-                        </input>
-                  
+                        <input  type='number' className='form-input' name='Age' placeholder='Enter your Age' />
+                        <label className='form-label'>Height(Inches) </label>
+                        <input type='number' className='form-input' name='Height' placeholder='Enter your height' />
+                        <label className='form-label'>Weight(lbs)</label>
+                        <input  type='number' className='form-input' name='Height' placeholder='Enter your Weight' />
+
                     <label className='form-label'>Activity Level</label>
-                    <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs'>
-                   
+                    <Form.Select className='form-inputs'>
         <option>Sedentary</option>
         <option>Light Activity</option>
         <option>Moderate Activity</option>
         <option>Very Active</option>
       </Form.Select>
-
       <label className='form-label'>Goal</label>
-                    <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs'>
+                    <Form.Select className='form-inputs'>
                    
         <option>Lose Weight</option>
         <option>Maintain Weight</option>
         <option>Gain Weight</option>
       </Form.Select>
+      <button className='form-input-btn' type='submit'>Submit</button>
       </div>
-      
-      <button className='form-input-btn'  type='submit'>Submit</button>
-        </ListGroup.Item>
-      </ListGroup>
-    </Card>
+      <div className='center' style={{textAlign:'center'}}><h2>Here is your Macros: </h2>
+    <Row >
+      <Col>Calorie</Col>
+   <Col > Protein</Col>
+    <Col> Carb</Col>
+    <Col> Fat</Col>
+ 
+    </Row>   </div>
+   </Card>
     </div>
+    
   )
 }
 

@@ -112,7 +112,7 @@ const Breakfast = () => {
         const renderCard = (card, index) => {
 
                 return (
-                    <Col className='tabs d-flex'>
+                    <Col className='tabs'>
             <Card style={{width: '30rem'}} key={index} className='box'>
                 <Card.Img variant='top'  src={card.image} />
                 <Card.Body>
@@ -142,7 +142,7 @@ const Breakfast = () => {
     if (loading){
         return <div>Loading...</div>;
     }
-    return <div className='grid'>{renderList(FoodInfo)}<h1>here we go!</h1></div>;
+    return <div className='grid'>{renderList(FoodInfo)}</div>;
 
 };
 

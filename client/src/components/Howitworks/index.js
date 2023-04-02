@@ -39,7 +39,7 @@ const Howitworks = () => {
       </WorkWrapper>
  
       </WorkContainer>
-      <div style={{display: 'block', padding: 30, alignItems: 'center', height: '90vh', backgroundColor:'black'}}>
+      <div style={{display: 'block', padding: 30, alignItems: 'center', height: 'auto', backgroundColor:'black'}}>
       <h4 style={{fontSize:'4rem', color:'#fff', textAlign:'center', margin:'8px'}}>What Does Healthy Mean?</h4>
       <Carousel controls={false} style={{ width:'1000px',
  
@@ -52,7 +52,7 @@ src={require('../../images/goal.jpg')} alt='first image'
            
           />
           <Carousel.Caption >
-            <h3>Label for first slide </h3>
+            <h1>You are more likely to reach your health goals. </h1>
            
           </Carousel.Caption>
         </Carousel.Item>
@@ -64,7 +64,7 @@ src={require('../../images/goal.jpg')} alt='first image'
             style={{height:'40rem'}}
           />
           <Carousel.Caption>
-            <h3>Label for second slide</h3>
+            <h1>It saves you lots of money.</h1>
            
           </Carousel.Caption>
         </Carousel.Item>
@@ -77,7 +77,7 @@ src={require('../../images/goal.jpg')} alt='first image'
             style={{height:'40rem'}}
           />
           <Carousel.Caption>
-            <h3>Label for Third slide</h3>
+            <h1>Meal planning decreases food waste.</h1>
            
           </Carousel.Caption>
         </Carousel.Item>
