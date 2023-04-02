@@ -19,39 +19,33 @@ function Calculator() {
   const [sex, setSex] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   
-  const token = Auth.loggedIn() ? Auth.getToken() : null;
-  console.log(Auth.loggedIn());
   const {loading, data} = useQuery(
     QUERY_ME
   );
 
-  console.log("loading",loading)
-  console.log("data", data)
   const handleInputChange = (e) => {
+    e.preventDefault();
     const { target } = e;
     const inputType = target.name;
     const inputValue = target.value;
 
-    if (inputType === 'age') {
-        setAge(inputValue);
-    } else if (inputType === 'height') {
-        setHeight(inputValue);
-    } else if (inputType === 'weight'){
-        setWeight(inputValue);
-    } else if (inputType === 'activity') {
+    if (inputType === 'Age') {
+        setAge(parseInt(inputValue));
+    } else if (inputType === 'Height') {
+        setHeight(parseInt(inputValue));
+    } else if (inputType === 'Weight'){
+        setWeight(parseInt(inputValue));
+    } else if (inputType === 'Activity') {
         setActivityLevel(inputValue);
-    } else if (inputType === 'sex') {
+    } else if (inputType === 'Sex') {
         setSex(inputValue);
     } else {
         setWeightGoal(inputValue);
     }
   };
-
   const handleFormSubmit = async (e) => {
-    e.preventDefault();
-
-    if (weight == 0) {
-        setErrorMessage('Please enter a value for weight');
+    if (age == 0) {
+        setErrorMessage('Please enter a value for age');
         return;
     }
 
@@ -75,7 +69,7 @@ function Calculator() {
           } else {
             calGoal = 655.1 + (9.563*weight*0.453592) + (1.85*height*2.54) - (4.676*age);
           }
-
+          calGoal = Math.floor(calGoal);
           switch (activityLevel) {
             case 'Sedentary': 
               calGoal = calGoal;
@@ -114,11 +108,22 @@ function Calculator() {
       calCalc -= calGoal/2;
       fatGoal = Math.floor(calCalc/9);
     }
-    
     calCalculator();
     macroCalc();
-
-
+    console.log(weight,age,height, "  ", calGoal, proteinGoal)
+    addUnsavedCalcInfo({
+      weight: weight,
+        age: age, 
+        height: height,
+        activityLevel: activityLevel,
+        loseMaintainGain: weightGoal,
+        calories: calGoal,
+        protein: proteinGoal,
+        carbs: carbGoal,
+        fat: fatGoal
+    });
+    
+    
 
     // alert(`Hello ${userName}`);
     try {
@@ -140,7 +145,7 @@ function Calculator() {
         <ListGroup.Item>
         <div className='form-inputs'>
                         <label className='form-label'>Sex</label>
-                        <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs' type='sex' onChange={handleInputChange}>
+                        <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs' name='Sex' onChange={handleInputChange}>
                           <option>Male</option>
                           <option>Female</option>
                         </Form.Select>
@@ -154,11 +159,11 @@ function Calculator() {
                         </input>
                     
                         <label className='form-label'>Weight (lbs)</label>
-                        <input type='weight' className='form-input' name='Height' placeholder='Enter your Weight in lbs' onChange={handleInputChange}>
+                        <input type='weight' className='form-input' name='Weight' placeholder='Enter your Weight in lbs' onChange={handleInputChange}>
                         </input>
                   
                     <label className='form-label'>Activity Level</label>
-                    <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs' type='activity' onChange={handleInputChange}>
+                    <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs' name='Activity' onChange={handleInputChange}>
                    
         <option>Sedentary</option>
         <option>Light Activity</option>

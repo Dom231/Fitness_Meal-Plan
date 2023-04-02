@@ -50,17 +50,7 @@ export const MealProvider = ({children}) => {
     }
 
     const addUnsavedCalcInfo = (unsavedObj) => {
-        setUnsavedCalcInfo({
-            weight: unsavedObj.weight,
-            age: unsavedObj.age, 
-            height: unsavedObj.height,
-            activityLevel: unsavedObj.activityLevel,
-            loseMaintainGain: unsavedObj.loseMaintainGain,
-            calories: unsavedObj.calories,
-            protein: unsavedObj.protein,
-            carbs: unsavedObj.carbs,
-            fat: unsavedObj.fat
-        })
+        setUnsavedCalcInfo(unsavedObj)
     }
     return (
         <MealContext.Provider
