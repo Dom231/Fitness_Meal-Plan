@@ -11,8 +11,10 @@ const  resolvers = {
     Query : {
         me: async (parent, args, context) => {
             if (context.user) {
-              return await Profile.findOne({ _id: context.user._id });
+              const userData = await Profile.findOne({ _id: context.user._id });
+              return userData;
             }
+            console.log(context.user);
             throw new AuthenticationError('You need to be logged in!');
           },
           meals: async (parent, args) => {

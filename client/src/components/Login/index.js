@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../Signup/signup.css';
 import { checkPassword, validateEmail } from '../../utils/helpers';
 import { useMutation } from '@apollo/client';
-import { ADD_PROFILE } from '../../utils/mutations';
 
 import { LOGIN_USER } from '../../utils/mutations';
 import { useNavigate } from 'react-router-dom'; 
@@ -17,7 +16,7 @@ const Login = (props) => {
     // const [email, setEmail] = useState('');
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
     const[validated] = useState("false");
-    const [login,{error,data}] = useMutation(LOGIN_USER);
+    const [login, {error,data}] = useMutation(LOGIN_USER);
     const[showAlert, setShowAlert] = useState(false);
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -60,9 +59,10 @@ const Login = (props) => {
         try {
             const {data} = await login({
                 variables: { ...userFormData}});
+            console.log("login page", data);
             Auth.login(data.login.token);
             event.preventDefault();
-            navigate("/calculator");
+            //navigate("/calculator");
         } 
         
         

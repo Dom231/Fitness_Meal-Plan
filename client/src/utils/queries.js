@@ -27,7 +27,6 @@ export const QUERY_ME = gql`
             protein_goal
             carb_goal
             fat_goal
-            day_plans
         }
     }
 `
