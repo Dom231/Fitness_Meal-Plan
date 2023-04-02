@@ -5,6 +5,7 @@ import { checkPassword, validateEmail } from '../../utils/helpers';
 import { useMutation } from '@apollo/client';
 import { ADD_PROFILE } from '../../utils/mutations';
 import { useNavigate } from 'react-router-dom';  
+import Auth from '../../utils/auth';
 
 
 function Signmeup() {
@@ -47,7 +48,10 @@ function Signmeup() {
             const {data} = await addProfile({
                 variables: {username: userName, email: email, password: password}
             });
+            console.log(data);
             
+            Auth.login(data.addProfile.token);
+
             setUserName('');
             setEmail('');
             setPassword('');

@@ -60,7 +60,7 @@ type Query{
 }
 
 type Mutation {
-    login(email: String!, password: String): Auth
+    login(email: String!, password: String!): Auth
     addProfile(username: String!, email: String!, password: String!): Auth
 
     addDayPlan(title: String!, breakfast: MealInput!, lunch: MealInput!, Dinner: MealInput!): Profile
