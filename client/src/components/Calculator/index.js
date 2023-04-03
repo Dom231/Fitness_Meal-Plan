@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
@@ -6,10 +6,34 @@ import { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ME } from '../../utils/queries';
 import { useMealContext } from '../../utils/MealContext';
-import Auth from "../../utils/auth";
+import { UPDATE_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import { useNavigate } from 'react-router-dom';  
 
 
 function Calculator() {
+  const { loading, data } = useQuery(QUERY_ME);
+  const profile = data?.me || {};
+  useEffect(() => {
+    console.log("profile", profile);
+    if (!(profile === {})){
+      if (!(profile.age === undefined)) {
+      document.getElementById("Age").value = profile.age;
+      document.getElementById("Height").value = profile.height;
+      document.getElementById("Weight").value = profile.body_weight;
+      document.getElementById("Activity").value = profile.activityLevel
+      document.getElementById('wgoal').value = profile.loseMaintainGain;
+      setAge(profile.age);
+      setHeight(profile.height);
+      setWeight(profile.body_weight);
+      setActivityLevel(profile.activityLevel);
+      setWeightGoal(profile.loseMaintainGain);
+    }
+    }
+    else {
+      console.log("false30", profile);
+    }
+  },[data]);
   const {goals, currentGoalNeeds, unsavedCalcInfo, addGoals, addCurrentGoalNeeds, addUnsavedCalcInfo} = useMealContext();
   const [age, setAge] = useState(0);
   const [height, setHeight] = useState(0);
@@ -17,11 +41,31 @@ function Calculator() {
   const [activityLevel, setActivityLevel] = useState('');
   const [weightGoal, setWeightGoal] = useState('');
   const [sex, setSex] = useState('');
+  const navigate = useNavigate();
+
   const [errorMessage, setErrorMessage] = useState('');
   
-  const {loading, data} = useQuery(
-    QUERY_ME
-  );
+  // const { loading, data } = useQuery(QUERY_ME);
+  const [updateProfile, {error}] = useMutation(UPDATE_USER);
+
+  // const profile = data?.me || {};
+
+  // console.log("profile", profile);
+  // if (!(profile === {})){
+  //   if (!(profile.age === undefined)) {
+  //   console.log("true28", profile.age);
+  //   document.getElementById("Age").value = profile.age;
+  //   console.log('true 37');
+  //   document.getElementById("Height").value = profile.height;
+  //   document.getElementById("Weight").value = profile.body_weight;
+  //   document.getElementById("Activity").value = profile.activityLevel
+  //   document.getElementById('wgoal').value = profile.loseMaintainGain;
+  // }
+  // }
+  //  else {
+  //   console.log("false30", profile);
+  // }
+
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -111,7 +155,7 @@ function Calculator() {
     calCalculator();
     macroCalc();
     console.log(weight,age,height, "  ", calGoal, proteinGoal)
-    addUnsavedCalcInfo({
+    await addUnsavedCalcInfo({
       weight: weight,
         age: age, 
         height: height,
@@ -123,8 +167,31 @@ function Calculator() {
         fat: fatGoal
     });
     
+    const token = Auth.loggedIn();
+    if (token) {
+      const mdata = await updateProfile({
+        variables: {
+          _id: profile._id,
+          age: age,
+          calorie_goal: calGoal, 
+          body_weight: weight, 
+          height: height, 
+          activityLevel: activityLevel, 
+          loseMaintainGain: weightGoal, 
+          protein_goal: proteinGoal,
+          carb_goal: carbGoal,
+          fat_goal: fatGoal
+        }
+      });
+      console.log("mdata",mdata.data.updateProfile);
+    }
     
-
+    // const token =Auth.loggedIn() ? Auth.getToken() : null;
+    // if (!token) {
+    //   navigate("/meallist");
+    // } else {
+    //   navigate("/signup");
+    // }
     // alert(`Hello ${userName}`);
     try {
       
@@ -151,19 +218,19 @@ function Calculator() {
                         </Form.Select>
                         
                         <label className='form-label'>Age</label>
-                        <input type='age' className='form-input' name='Age' placeholder='Enter your Age' onChange={handleInputChange}>
+                        <input type='age' className='form-input' name='Age' id='Age'placeholder='Enter your Age' onChange={handleInputChange}>
                         </input>
       
                         <label className='form-label'>Height (inches)</label>
-                        <input type='height' className='form-input' name='Height' placeholder='Enter your height in Inches' onChange={handleInputChange}>
+                        <input type='height' className='form-input' name='Height' id='Height' placeholder='Enter your height in Inches' onChange={handleInputChange}>
                         </input>
                     
                         <label className='form-label'>Weight (lbs)</label>
-                        <input type='weight' className='form-input' name='Weight' placeholder='Enter your Weight in lbs' onChange={handleInputChange}>
+                        <input type='weight' className='form-input' name='Weight' id="Weight" placeholder='Enter your Weight in lbs' onChange={handleInputChange}>
                         </input>
                   
                     <label className='form-label'>Activity Level</label>
-                    <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs' name='Activity' onChange={handleInputChange}>
+                    <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs' name='Activity' id='Activity' onChange={handleInputChange}>
                    
         <option>Sedentary</option>
         <option>Light Activity</option>
@@ -172,7 +239,7 @@ function Calculator() {
       </Form.Select>
 
       <label className='form-label'>Goal</label>
-                    <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs' type='wgoal' onChange={handleInputChange}>
+                    <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs' name='wgoal' id='wgoal' onChange={handleInputChange}>
                    
         <option>Lose Weight</option>
         <option>Maintain Weight</option>
