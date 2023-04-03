@@ -17,6 +17,7 @@ db.once('open', async () => {
       .then((res) => res.json())
       .then((data) => data);
 
+
       let mealList = []
       await Meal.deleteMany({});
       await getMeals().then(async (response) => {

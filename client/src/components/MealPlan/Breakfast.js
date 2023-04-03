@@ -100,7 +100,9 @@ const Breakfast = () => {
     const {loading, data} = useQuery(
         QUERY_MEALS,
         {
-            variables: {}
+            variables: {
+
+            }
         }
     )
     FoodInfo = data;  
@@ -110,7 +112,7 @@ const Breakfast = () => {
         const renderCard = (card, index) => {
 
                 return (
-                    <Col className='tabs d-flex'>
+                    <Col className='tabs'>
             <Card style={{width: '30rem'}} key={index} className='box'>
                 <Card.Img variant='top'  src={card.image} />
                 <Card.Body>

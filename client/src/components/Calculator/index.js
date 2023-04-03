@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
@@ -8,8 +7,9 @@ import { QUERY_ME } from '../../utils/queries';
 import { useMealContext } from '../../utils/MealContext';
 import { UPDATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-import { useNavigate } from 'react-router-dom';  
-
+import { useNavigate } from 'react-router-dom';
+import ListGroup from 'react-bootstrap/ListGroup';  
+import './cal.css';
 
 function Calculator() {
   const { loading, data } = useQuery(QUERY_ME);
@@ -88,17 +88,17 @@ function Calculator() {
     }
   };
   const handleFormSubmit = async (e) => {
-    if (age == 0) {
+    if (age === 0) {
         setErrorMessage('Please enter a value for age');
         return;
     }
 
-    if (height == 0) {
+    if (height === 0) {
         setErrorMessage(`Please enter a value for height`);
         return;
     }
 
-    if (weight == 0) {
+    if (weight === 0) {
       setErrorMessage('Please enter a value for weight');
       return;
     }
@@ -204,8 +204,7 @@ function Calculator() {
   return (
     <div>
 
-    <Card style={{marginLeft:'50rem', marginRight:'50rem', marginTop:'1rem'}}>
-    {/* <Card.Img  style={{imageResolution:'2rem'}} src={cal} /> */}
+    <Card className='card-info'>
     <Card.Title style={{textAlign:'center'}}><h1> Calculate your Macros </h1></Card.Title>
   
       <ListGroup >
@@ -237,7 +236,6 @@ function Calculator() {
         <option>Moderate Activity</option>
         <option>Very Active</option>
       </Form.Select>
-
       <label className='form-label'>Goal</label>
                     <Form.Select style={{borderRadius:'2px', fontSize:'1.5rem'}}className='form-inputs' name='wgoal' id='wgoal' onChange={handleInputChange}>
                    
@@ -245,6 +243,7 @@ function Calculator() {
         <option>Maintain Weight</option>
         <option>Gain Weight</option>
       </Form.Select>
+      {/* <button className='form-input-btn' type='submit'>Submit</button> */}
       </div>
       
       <button className='form-input-btn'  type='submit' onClick={handleFormSubmit}>Submit</button>
@@ -256,6 +255,7 @@ function Calculator() {
                             <h2 className='error-text'><mark>{errorMessage} Broken</mark></h2>
                         </div>)}
     </div>
+    
   )
 }
 

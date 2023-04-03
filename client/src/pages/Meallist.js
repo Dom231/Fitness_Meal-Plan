@@ -4,11 +4,13 @@ import MealPlan from '../components/MealPlan';
 
 function Meallist() {
   return (
-    <div style={{ justifyContent: 'center', alignItems: 'center', height: '90vh', fontSize:'8rem'}}>
+    <>
+    <div style={{height: 'auto'}}>
       
       <MealPlan />
-      <Footer />
+     
     </div>
+     <Footer /></>
   )
 }
 
