@@ -11,7 +11,8 @@ const  resolvers = {
     Query : {
         me: async (parent, args, context) => {
             if (context.user) {
-              return await Profile.findOne({ _id: context.user._id });
+              const userData = await Profile.findOne({ _id: context.user._id });
+              return userData;
             }
             throw new AuthenticationError('You need to be logged in!');
           },
@@ -32,7 +33,8 @@ const  resolvers = {
                               fat: {$gt: fat-20,
                                     $lt: fat+20}
             });
-          }
+          },
+
 
 
         
@@ -77,8 +79,28 @@ const  resolvers = {
           return meal
         }
       
+      
         throw new AuthenticationError('Not logged in');
       }, 
+
+      updateProfile: async (parent, {_id, calorie_goal, body_weight, height, activityLevel, loseMaintainGain, protein_goal, carb_goal, fat_goal, age}, context) => {
+        if (context.user) {
+          const newProf = await Profile.findOneAndUpdate({_id: _id}, {
+            age: age,
+            calorie_goal: calorie_goal, 
+            body_weight: body_weight, 
+            height: height, 
+            activityLevel: activityLevel, 
+            loseMaintainGain: loseMaintainGain, 
+            protein_goal: protein_goal,
+            carb_goal: carb_goal,
+            fat_goal: fat_goal
+          }, {new: true});
+
+          return newProf;
+        }
+        throw new AuthenticationError('Not logged in');
+      },
       
       // addDayPlan: async (parent, {title, breakfast, lunch, dinner}, context) => {
       //   if(context.user){

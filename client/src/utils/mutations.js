@@ -24,3 +24,17 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const UPDATE_USER = gql`
+  mutation update($_id: ID!, $calorie_goal: Int, $body_weight: Int, $height: Int, $age: Int, $activityLevel: String, $loseMaintainGain: String, $protein_goal: Int, $carb_goal: Int, $fat_goal: Int) {
+    updateProfile(_id: $_id, calorie_goal: $calorie_goal, body_weight: $body_weight, height: $height, age: $age, activityLevel: $activityLevel, loseMaintainGain: $loseMaintainGain, protein_goal: $protein_goal, carb_goal: $carb_goal, fat_goal: $fat_goal){
+      _id
+      username
+      age
+      calorie_goal
+      protein_goal
+      carb_goal
+      fat_goal
+    }
+  }
+`

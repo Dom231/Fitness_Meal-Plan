@@ -3,7 +3,7 @@ const { Profile, Meal, DayMealPlan } = require('../models');
 const profileSeeds = require('./profileSeeds.json');
 require('dotenv').config()
 
-const spoonBaseUrl = "https://api.spoonacular.com/recipes/findByNutrients?minCarbs=1&number=5"
+const spoonBaseUrl = "https://api.spoonacular.com/recipes/findByNutrients?minCarbs=1&number=100"
 const spoonKey = process.env.SPOON_API_KEY
 
 db.once('open', async () => {

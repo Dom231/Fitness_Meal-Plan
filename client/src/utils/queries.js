@@ -17,6 +17,7 @@ export const QUERY_MEALS = gql`
 export const QUERY_ME = gql`
     query meProfile {
         me {
+            _id
             username
             calorie_goal
             body_weight
@@ -27,7 +28,6 @@ export const QUERY_ME = gql`
             protein_goal
             carb_goal
             fat_goal
-            day_plans
         }
     }
 `

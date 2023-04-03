@@ -30,7 +30,7 @@ class AuthService {
 
   login(idToken) {
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/calculator');
+    window.location.assign('/meallist');
   }
 
   logout() {
