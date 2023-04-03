@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 // import { FaMagento} from 'react-icons/fa';
 import {Link as LinkR} from 'react-router-dom';
-import {Link as LinkS} from 'react-scroll'
+// import {Link as LinkS} from 'react-scroll'
 
 // import { Container } from'../../globalStyles';
 
@@ -9,9 +9,10 @@ import {Link as LinkS} from 'react-scroll'
 export const Nav = styled.nav`
 background-color: black;
 height: 150px;
+
 /* margin-top: -80px; */
 display:flex;
-justify-content: center;
+justify-content: space-between;
 align-items: center;
 font-size: 2rem;
 position: sticky;
@@ -38,13 +39,10 @@ color: #fff;
 justify-self: flex-start;
 cursor: pointer;
 text-decoration: none;
-font-size: 2rem;
+font-size: 2.5rem;
 display: flex;
 align-items: center;
-margin-left: 24px;
-font-weight: bold;
-
-    
+font-weight: bold;   
 `
 
 
@@ -65,9 +63,11 @@ display: none;
 export const NavMenu = styled.ul`
 display:flex;
 align-items:center;
+flex-wrap: nowrap;
 list-style: none;
 text-align: center;
-margin-right: -22px;
+margin-right: -20rem;
+/* margin-left: 24px; */
 
 @media screen and (max-width:768px){
     display:none;
@@ -77,26 +77,9 @@ margin-right: -22px;
 `
 export const NavItem = styled.li`
 height: 80px;
-/* border-bottom: 2px  transparent; */
-/* 
-&:hover {
-    border-bottom: 2px ;
-   
-    transition: all 0.3s ease-out;
-    background: #fff;
-
-}
-
-@media screen and (max-width: 960px){
-    width: 100%;
-
-   &:hover {
-        border: none;
-    }
-} */
 `
 
-export const NavLink = styled(LinkS)`
+export const NavLink = styled(LinkR)`
 color: #fff;
 display: flex;
 align-items: center;
@@ -112,6 +95,7 @@ height: 100%;
 export const NavBtn = styled.nav`
 display:flex;
 align-items: center;
+margin-right: 4rem;
 
 @media screen and (max-width: 768px){
     display:none;
@@ -124,7 +108,7 @@ background: #fff;
 white-space: nowrap;
 padding: 10px 22px;
 color: #000;
-font-size: 16px;
+font-size: 24px;
 outline: none;
 border: none;
 cursor: pointer;

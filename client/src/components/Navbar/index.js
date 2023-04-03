@@ -1,14 +1,13 @@
-import React, {useState}from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import React from 'react';
+import { FaBars } from 'react-icons/fa';
 // import {IconContext } from 'react-icons/lib';
 import { Nav,NavbarContainer ,NavLogo, NavMenu, NavItem, NavLink,HamburgerIcon, NavBtn, NavBtnLink } from './indexElement';
 // import {Button} from '../../globalStyles';
+import '../../bootstrap.min.css';
 
-const Navbar = () => {
+const Navbar = ({toggle }) => {
 
- const [click, setClick] = useState(false);
-
- const handleClick = () => setClick(!click);
+ 
   return (
     <>
    
@@ -18,9 +17,10 @@ const Navbar = () => {
     Fitness Meal Planner
   </NavLogo>
 
-  <HamburgerIcon onClick={handleClick}>
-    {click ? <FaTimes /> : <FaBars />}
+  <HamburgerIcon onClick={toggle}>
+    <FaBars />
   </HamburgerIcon>
+
   <NavMenu >
   <NavItem>
     <NavLink to='/' >
@@ -29,7 +29,7 @@ const Navbar = () => {
   </NavItem>
 
   <NavItem>
-    <NavLink to='/meallist' >
+    <NavLink to="/meallist" >
       Meal Plan
     </NavLink>
   </NavItem>
@@ -40,11 +40,7 @@ const Navbar = () => {
     </NavLink>
   </NavItem>
 
-  <NavItem>
-    <NavLink to='/login' >
-    Login
-    </NavLink>
-  </NavItem>
+
 
   <NavItem>
     <NavLink to='/aboutus' >
@@ -53,10 +49,11 @@ const Navbar = () => {
   </NavItem>
 
 </NavMenu>
-<NavBtn>
+</NavbarContainer>
+<NavBtn className="mr-left">
   <NavBtnLink to='/login'>Sign In</NavBtnLink>
 </NavBtn>
-  </NavbarContainer>
+  
       </Nav>
     
     </>

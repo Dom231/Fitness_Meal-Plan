@@ -1,7 +1,7 @@
 import React from 'react';
-import calculate from '../../images/calculate.png';
-import healthy from '../../images/healthy.png';
-import mealplan from '../../images/mealplan.png';
+import calculate from '../../images/cal.gif';
+import healthy from '../../images/healthy.gif';
+import mealplan from '../../images/mealplan.gif';
 import {WorkContainer, WorkCard, WorkH1, WorkH2, WorkIcon, WorkP, WorkWrapper } from './IndexElement';
 import Carousel from 'react-bootstrap/Carousel';
 import '../../bootstrap.min.css';
