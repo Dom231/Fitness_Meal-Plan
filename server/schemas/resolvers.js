@@ -24,15 +24,19 @@ const  resolvers = {
             return Meal.find(params)
           },
           mealsFiltered: async (parent, {calories, protein, carbs, fat}) => {
-            return Meal.find({calories: {$gt: calories-200,
-                                         $lt: calories+200},
-                              protein: {$gt: protein-20,
-                                        $lt: protein+20},
-                              carbs: {$gt: carbs-20,
-                                      $lt: carbs+20},
-                              fat: {$gt: fat-20,
-                                    $lt: fat+20}
-            });
+            return Meal.find({$and: [{calories: {$gt: calories-100,
+                                         $lt: calories+100}},
+                              // {protein: {$gt: protein-50,
+                              //           $lt: protein+50
+                              //         }},
+                              // {carbs: {$gt: carbs-50,
+                              //         $lt: carbs+50
+                              //       }},
+                              // {fat: {$gt: fat-50,
+                              //      $lt: fat+50
+                              //     }}
+                            ]
+            },);
           },
 
 
@@ -66,9 +70,9 @@ const  resolvers = {
       },
 
 
-      addMeal: async (parent, {api_id, title, calories, fat, protein, carbs, image}, context) => {
+      addMeal: async (parent, {id, title, calories, fat, protein, carbs, image}, context) => {
         if(context.user){
-          const meal = new Meal({api_id, title, calories, fat, protein, carbs, image});
+          const meal = new Meal({id, title, calories, fat, protein, carbs, image});
       
           await Profile.findOneAndUpdate({_id:context.user._id}, {
             $addToSet: { saved_meals: meal} 

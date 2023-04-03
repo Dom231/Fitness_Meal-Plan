@@ -59,6 +59,7 @@ import Nav from 'react-bootstrap/Nav';
 
 
 
+
 const BTabs = () => {
   const {loading, data} = useQuery(
     QUERY_ME
@@ -67,13 +68,15 @@ const BTabs = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  // if (!data?.calorie_goal) {
-  //   return (
-  //     <h1>
-  //       Please use the fitness goal calculator to see meals! <a href="/calculator">Calculator</a>
-  //     </h1>
-  //   );
-  // }
+  if (data.me.calorie_goal === null) {
+    return (
+      <h1>
+        Please use the fitness goal calculator to see meals! <a href="/calculator">Calculator</a>
+      </h1>
+    );
+  }
+
+
   return (
     < >
       {/* <Row className='tabs'>
