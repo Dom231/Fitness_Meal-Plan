@@ -1,0 +1,87 @@
+.Cardabout{
+    width:600px;
+    height: 880px;
+    background: white;
+    border-radius: 10px;
+    margin: 2rem;
+  overflow: hidden;
+    box-shadow: 0px 1px 10px 1px black;
+ justify-content: center;
+    
+}
+.tab{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+
+}
+
+.upper-container{
+    height: 200px;
+    background: linear-gradient(to left, #666462 0%, #2c2b24 100%);
+}
+
+.image-container 
+.imgabout{
+    background: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 5px;
+    transform: translate(12rem,7rem);
+}
+
+.imgabout{
+    border: 2px solid black;
+}
+
+.lower-container{
+    margin-top: 60px;
+    height: 300px;
+    background: white;
+    text-align: center;
+}
+
+.lower-container h3,h4,p{
+    padding: 0;
+}
+
+.lower-container h3{
+    color: black;
+    margin-top:8rem;
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.lower-container h4{
+    color: black;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.lower-container p{
+    margin-top:2rem;
+    color: black;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.link-github{
+    margin: 10rem;
+   display: inline-block;
+   text-decoration: none;
+    font: bold;
+    font-size: 1.5rem;
+    background-color: white;
+    border: 2px solid grey;
+    padding: 0.6rem;
+    border-radius: 6px;
+    transition-duration: 0.5s;
+    animation: ease-in-out;
+}
+
+.link-github:hover{
+  
+    transform: scale(1.1);
+}

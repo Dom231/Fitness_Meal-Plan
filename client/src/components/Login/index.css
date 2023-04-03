@@ -121,3 +121,34 @@ background: linear-gradient(90deg, rgd(40,40,40) 0%, rgb(231, 16, 16) 100%);
 }
 
 
+@media screen and (max-width: 1100px){
+   .form-image{
+    height: 50%;
+   }
+
+   .form h1{
+    font-size: 1rem;
+}
+}
+
+@media screen and (max-width: 600px){
+    .form h1{
+        font-size: 1rem;
+    }
+     .form-label{
+        font-size: 1rem;
+    }
+        .form-input{
+        width: 12rem;
+ }
+
+  .form-input-login{
+    font-size: 1rem;
+ }
+
+ .form-content-left{
+    display: block;
+ }
+
+
+}
