@@ -6,7 +6,7 @@ const typeDefs = gql `
 
 type Meal {
     _id: ID
-    api_id: String
+    id: Int
     title: String
     calories: Int
     fat: Int
@@ -65,7 +65,7 @@ type Mutation {
 
     addDayPlan(title: String!, breakfast: MealInput!, lunch: MealInput!, Dinner: MealInput!): Profile
     updateProfile(_id:ID!, calorie_goal: Int, body_weight: Int, height: Int, age: Int, activityLevel: String, loseMaintainGain: String, protein_goal: Int, carb_goal: Int, fat_goal: Int): Profile
-    addMeal(title: String!, calories: Int!, fat: Int!, protein: Int!, carbs: Int!, image: String! ):Profile
+    addMeal(id: Int!, title: String!, calories: Int!, fat: Int!, protein: Int!, carbs: Int!, image: String! ):Profile
     removeDayPlan(_id: ID!):Profile
     removeMeal(api_id: Int!):Profile
     
@@ -73,7 +73,7 @@ type Mutation {
 
  input MealInput {
     _id: ID
-    api_id: String
+    id: Int
     title: String
     calories: Int
     fat: Int

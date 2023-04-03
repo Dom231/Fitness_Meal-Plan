@@ -6,116 +6,142 @@ import Card from 'react-bootstrap/Card';
 import './mealindex.css';
 import React from 'react';
 import {FaBurn} from 'react-icons/fa';
+import { useMealContext } from '../../utils/MealContext';
 
+import { useQuery } from '@apollo/client';
+import { QUERY_MEALS_FILTERED } from '../../utils/queries';
 
 
 
 
 const Lunch = () => {
-   
-    const FoodInfo = [
+    const {goals, lunchGoalNeeds, dinnerGoalNeeds, unsavedCalcInfo, workingBreakfast, workingLunch, workingDinner, addGoals, addLunchGoalNeeds, addDinnerGoalNeeds, addUnsavedCalcInfo, addBreakfast, addLunch, addDinner} = useMealContext();
+    let search = {
+        calories: Math.floor(lunchGoalNeeds.calories/2),
+        protein: Math.floor(lunchGoalNeeds.protein/2),
+        carbs: Math.floor(lunchGoalNeeds.carbs/2),
+        fat: Math.floor(lunchGoalNeeds.fat/2)
+    }
+    console.log("lunch goals", search);
+    const {loading, data} = useQuery(
+        QUERY_MEALS_FILTERED,
         {
-            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-            title: "Salad Bowl with veggies and dressing",
-            Calorie: 250,
-            
-            Protein: 25,
-            Carb: 120,
-            Fat: 5,
-            
-        },
-        {
-            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-            title: "Salad Bowl",
-            Calorie: 450,
-            Protein: 25,
-            Carb: 120,
-            Fat: 5,
-            
-        },
-        {
-            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-            title: "Salad Bowl",
-            Calorie: 450,
-            Protein: 25,
-            Carb: 120,
-            Fat: 5,
-            
-        },
-        {
-            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-            title: "Salad Bowl",
-            Calorie: 450,
-            Protein: 25,
-            Carb: 120,
-            Fat: 5,
-            
-        },
-        {
-            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-            title: "Salad Bowl",
-            Calorie: 450,
-            Protein: 25,
-            Carb: 120,
-            Fat: 5,
-            
-        },
-        {
-            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-            title: "Salad Bowl",
-            Calorie: 450,
-            Protein: 25,
-            Carb: 120,
-            Fat: 5,
-            
-        },
-        {
-            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-            title: "Salad Bowl",
-            Calorie: 450,
-            Protein: 25,
-            Carb: 120,
-            Fat: 5,
-            
-        },
-      
-        {
-            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-            title: "Salad Bowl",
-            Calorie: 450,
-            Protein: 25,
-            Carb: 120,
-            Fat: 5,
-            
-        },
-      
-      
-       
-    
-    ];
-
-    const renderCard = (card, index) => {
-
-    return (
-        <Col className='tabs d-flex'>
-<Card style={{width: '30rem'}} key={index} className='box'>
-    <Card.Img variant='top'  src={card.image} />
-    <Card.Body>
-        <Card.Title className='title'>{card.title}</Card.Title>
-        <Card.Body>
-        <Card.Title className='macros'><FaBurn />Calorie: {card.Calorie}</Card.Title>
-        <Card.Title className='macros'>Protein: {card.Protein}</Card.Title>
-        <Card.Title className='macros'>Carb: {card.Carb}</Card.Title>
-        <Card.Title className='macros'>Fat: {card.Fat}</Card.Title>
-        </Card.Body>
+            variables: {
+                calories: search.calories,
+                protein: search.protein,
+                carbs: search.carbs,
+                fat: search.fat
+            }
+        }
+    )
+    let FoodInfo = data;  
+    console.log(data);
+    const handleClick = async (e) => {
+        e.preventDefault();
+        const {target} = e;
+        let newT = target;
+        //find right target for data info
+        while (newT.className!=="tabs d-flex toppull col") {
+            newT = newT.parentElement
+        }
         
-    </Card.Body>
-</Card>
-</Col>
+        if (newT.style.backgroundColor == "green") {
+            newT.style.backgroundColor = "white";
+            let meal = {
+                id: null,
+                title: null,
+                calories: null,
+                protein: null,
+                fat: null,
+                carbs: null,
+                image: null
+            }
+            console.log(meal);
+            addLunch(meal);
+        } else {
+            newT.style.backgroundColor = "green"
+            let meal = {
+                id: newT.dataset.id,
+                title: newT.dataset.title,
+                calories: newT.dataset.calorie,
+                protein: newT.dataset.protein,
+                fat: newT.dataset.fat,
+                carbs: newT.dataset.carb,
+                image: newT.dataset.image
+            }
+            console.log(meal);
+            addLunch(meal);
+            let newGoals = {
+                calories: lunchGoalNeeds.calories - meal.calories,
+                protein: lunchGoalNeeds.protein - meal.protein,
+                carbs: lunchGoalNeeds.carbs - meal.carbs,
+                fat: lunchGoalNeeds.fat - meal.fat
+            }
+            console.log("after lunch",newGoals)
+            addDinnerGoalNeeds(newGoals);
+        }
+        //create meal obj with data info
+        // let meal = {
+        //     id: newT.dataset.id,
+        //     title: newT.dataset.title,
+        //     calories: newT.dataset.calorie,
+        //     protein: newT.dataset.protein,
+        //     fat: newT.dataset.fat,
+        //     carbs: newT.dataset.carb,
+        //     image: newT.dataset.image
+        // }
+        // console.log(meal);
+        // addBreakfast(meal);
 
-    );
+    }
+
+    const renderList = (obj) => {
+        let list = [];
+        const renderCard = (card, index) => {
+
+                return (
+            <Col className='tabs d-flex toppull' key={index} 
+            data-title={card.title} 
+            data-image={card.image} 
+            data-calorie={card.calories}
+            data-protein={card.protein}
+            data-carb={card.carbs}
+            data-fat={card.fat}
+            data-id={index} onClick={handleClick}>
+                <Card style={{width: '30rem'}}  className='box'>
+                    <Card.Img variant='top'  src={card.image} />
+                    <Card.Body>
+                        <Card.Title className='title'>{card.title}</Card.Title>
+                        <Card.Body>
+                            <Card.Title className='macros'><FaBurn />Calorie: {card.calories}</Card.Title>
+                            <Card.Title className='macros'>Protein: {card.protein}</Card.Title>
+                            <Card.Title className='macros'>Carb: {card.carbs}</Card.Title>
+                            <Card.Title className='macros'>Fat: {card.fat}</Card.Title>
+                        </Card.Body>
+                        
+                    </Card.Body>
+                </Card>
+            </Col>
+                );
     };
-    return <div className='grid'>{FoodInfo.map(renderCard)}</div>;
+    for (const key in obj.mealsFiltered) {
+        const element=obj.mealsFiltered[key];
+        list.push(renderCard(element, element.id));
+    }
+    return list;
+    }
+    
+    if (loading){
+        return <div>Loading...</div>;
+    }
+
+
+    return <div className='grid'>
+        
+            {renderList(FoodInfo)}
+        
+        
+        </div>;
 
 };
 

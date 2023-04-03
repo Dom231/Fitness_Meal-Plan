@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const mealSchema = new Schema({
-    api_id: {
+    id: {
         type: Number,
         require: true
     },

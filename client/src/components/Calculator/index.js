@@ -141,7 +141,7 @@ function Calculator() {
               break;
           }
     }
-    //1g protein per body weight
+    //1g protein per pound of body weight
     //50% cal from carbs
     //rest is fat
     function macroCalc() {
@@ -166,6 +166,18 @@ function Calculator() {
         carbs: carbGoal,
         fat: fatGoal
     });
+    await addGoals({
+      calories: calGoal,
+      protein: proteinGoal,
+      carbs: carbGoal,
+      fat: fatGoal
+    });
+    await addCurrentGoalNeeds({
+      calories: calGoal,
+      protein: proteinGoal,
+      carbs: carbGoal,
+      fat: fatGoal
+    });
     
     const token = Auth.loggedIn();
     if (token) {
@@ -184,6 +196,8 @@ function Calculator() {
         }
       });
       console.log("mdata",mdata.data.updateProfile);
+    } else {
+      console.log('not logged in');
     }
     
     // const token =Auth.loggedIn() ? Auth.getToken() : null;
