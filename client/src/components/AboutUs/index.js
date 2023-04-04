@@ -3,7 +3,7 @@ import './aboutus.css'
 import mit from '../../images/mitch.jpg';
 import dom from '../../images/dom.jpg';
 import kav from '../../images/kav.JPG';
-import Footer from '../Footer';
+
 
 function AboutUs() {
   return (

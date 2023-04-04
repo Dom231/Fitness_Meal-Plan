@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-// import { FaMagento} from 'react-icons/fa';
 import {Link as LinkR} from 'react-router-dom';
-// import {Link as LinkS} from 'react-scroll'
 
-// import { Container } from'../../globalStyles';
 
 
 export const Nav = styled.nav`
