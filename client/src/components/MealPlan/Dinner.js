@@ -8,14 +8,19 @@ import React from 'react';
 import {FaBurn} from 'react-icons/fa';
 import { useMealContext } from '../../utils/MealContext';
 
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_MEALS_FILTERED } from '../../utils/queries';
+import { ADD_DAYPLAN } from '../../utils/mutations';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 const Dinner = () => {
    const {goals, lunchGoalNeeds, dinnerGoalNeeds, unsavedCalcInfo, workingBreakfast, workingLunch, workingDinner, addGoals, addLunchGoalNeeds, addDinnerGoalNeeds, addUnsavedCalcInfo, addBreakfast, addLunch, addDinner} = useMealContext();
+   const [addDayPlan, {error}] = useMutation(ADD_DAYPLAN);
+   const navigate = useNavigate();
+
     let search = {
         calories: Math.floor(dinnerGoalNeeds.calories),
         protein: Math.floor(dinnerGoalNeeds.protein),
@@ -61,16 +66,30 @@ const Dinner = () => {
         } else {
             newT.style.backgroundColor = "green"
             let meal = {
-                id: newT.dataset.id,
+                id: parseInt(newT.dataset.id),
                 title: newT.dataset.title,
-                calories: newT.dataset.calorie,
-                protein: newT.dataset.protein,
-                fat: newT.dataset.fat,
-                carbs: newT.dataset.carb,
+                calories: parseInt(newT.dataset.calorie),
+                protein: parseInt(newT.dataset.protein),
+                fat: parseInt(newT.dataset.fat),
+                carbs: parseInt(newT.dataset.carb),
                 image: newT.dataset.image
             }
             console.log(meal);
             addDinner(meal);
+
+            //run mutation to add profile
+            //redirect profile page
+            const mdata = await addDayPlan({
+                variables: {
+                    title: "New Plan",
+                    breakfast: workingBreakfast,
+                    lunch: workingLunch,
+                    dinner: workingDinner
+                }, 
+            });
+
+            console.log(mdata);
+            navigate('/me');
         }
 
 

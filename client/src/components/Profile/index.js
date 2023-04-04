@@ -6,9 +6,13 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_ME } from '../../utils/queries';
 
 function Me() {
-  
+  const { loading, data } = useQuery(QUERY_ME);
+  const profile = data?.me || {};
+  console.log(profile);
   const [open, setOpen] = useState(false);
   return (
     <>
