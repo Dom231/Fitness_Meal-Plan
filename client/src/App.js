@@ -13,8 +13,8 @@ import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Meallist from './pages/Meallist';
-import Calculator from './pages/Calculator';
-import Signup  from './components/Signup';
+import Cal_calc from './pages/Calculator';
+import Signmeup  from './components/Signup';
 import Profile from './pages/Profile';
 import Aboutus from './pages/Aboutus';
 import Login from './components/Login';
@@ -61,10 +61,10 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/home' element={<Home/>} />
         <Route path='/meallist' element={<Meallist/>} />
-        <Route path='/calculator' element={<Calculator/>} />
+        <Route path='/calculator' element={<Cal_calc/>} />
         <Route path='/me' element={<Profile/>}/>
         <Route path='/login' element={<Login />}/>
-        <Route path='/signup' element={<Signup/>} />
+        <Route path='/signup' element={<Signmeup/>} />
         <Route path='/aboutus' element={<Aboutus/>} />
         </Routes>
       </Router>

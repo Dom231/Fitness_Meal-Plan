@@ -172,12 +172,7 @@ function Calculator() {
       carbs: carbGoal,
       fat: fatGoal
     });
-    await addCurrentGoalNeeds({
-      calories: calGoal,
-      protein: proteinGoal,
-      carbs: carbGoal,
-      fat: fatGoal
-    });
+
     
     const token = Auth.loggedIn();
     if (token) {
