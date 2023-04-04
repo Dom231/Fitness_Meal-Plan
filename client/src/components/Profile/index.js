@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import welcome from '../../images/welcome.jpg';
 import money from '../../images/money.jpg';
@@ -8,12 +8,58 @@ import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ME } from '../../utils/queries';
+import { render } from 'react-dom';
 
 function Me() {
+  useEffect(()=>{
+    const reloadCount = sessionStorage.getItem('reloadCount');
+    if(reloadCount < 1) {
+      sessionStorage.setItem('reloadCount', String(reloadCount + 1));
+      window.location.reload();
+    } else {
+      sessionStorage.removeItem('reloadCount');
+    }
+  },[]);
   const { loading, data } = useQuery(QUERY_ME);
   const profile = data?.me || {};
-  console.log(profile);
+  useEffect(() => {
+    console.log("profile", profile);
+  },[data]);
   const [open, setOpen] = useState(false);
+
+
+  const renderList = (obj) => {
+    let list = [];
+    const renderCard = (card, index) => {
+
+            return (
+        <tbody>
+        <tr>
+          <td><h1>{card.title}</h1></td>
+          <td><Card style={{width: '30rem', alignItems:'center'}}  className='box'>
+          <Card.Img variant='top'  src={card.breakfast.image} />
+          </Card>
+          <Card.Title><h3 >{card.breakfast.title}</h3></Card.Title></td>
+          <td><Card style={{width: '30rem'}}  className='box'>
+          <Card.Img variant='top'  src={card.lunch.image} />
+          </Card>
+          <Card.Title><h3 >{card.lunch.title}</h3></Card.Title></td>
+          <td><Card style={{width: '30rem'}}  className='box'>
+          <Card.Img variant='top'  src={card.dinner.image} />
+          </Card>
+          <Card.Title><h3 >{card.dinner.title}</h3></Card.Title></td>
+        </tr>
+        
+      </tbody>
+            );
+};
+console.log(obj);
+for (const key in obj) {
+    const element=obj[key];
+    list.push(renderCard(element, element._id));
+}
+return list;
+}
   return (
     <>
    
@@ -36,22 +82,22 @@ function Me() {
       <Card style={{marginLeft:'60rem', marginRight:'60rem',border:'none', backgroundColor:'whitesmoke', color:'black', borderRadius:'2rem'}}>
       <ListGroup >
       <div className="card-header d-flex" style={{padding:'2rem'}}>
-    <h2>CALORIE</h2>
-    <span className="ms-auto text-muted"><h1>48</h1></span>
+    <h2>CALORIE GOAL</h2>
+    <span className="ms-auto text-muted"><h1>{profile.calorie_goal}</h1></span>
   </div>
       <div className="card-header d-flex" style={{padding:'2rem'}}>
-    <h2>Protein</h2>
-    <span className="ms-auto text-muted"><h1>48</h1></span>
+    <h2>PROTEIN GOAL</h2>
+    <span className="ms-auto text-muted"><h1>{profile.protein_goal}</h1></span>
   </div>
       
   <div className="card-header d-flex" style={{padding:'2rem'}}>
-  <h2>Carb</h2>
-    <span className="ms-auto text-muted"><h1>48</h1></span>
+  <h2>CARB GOAL</h2>
+    <span className="ms-auto text-muted"><h1>{profile.carb_goal}</h1></span>
   </div>
 
   <div className="card-header d-flex" style={{padding:'2rem'}}>
-  <h2>Fat</h2>
-    <span className="ms-auto text-muted"><h1>48</h1></span>
+  <h2>FAT GOAL</h2>
+    <span className="ms-auto text-muted"><h1>{profile.fat_goal}</h1></span>
   </div>
       </ListGroup>
     </Card>
@@ -76,24 +122,7 @@ function Me() {
           <th><h1>Dinner</h1></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td><h1>Day 1</h1></td>
-          <td><Card style={{width: '30rem', alignItems:'center'}}  className='box'>
-          <Card.Img variant='top'  src={money} />
-          </Card>
-          <Card.Title><h3 >Egg Roll</h3></Card.Title></td>
-          <td><Card style={{width: '30rem'}}  className='box'>
-          <Card.Img variant='top'  src={money} />
-          </Card>
-          <Card.Title><h3 >Egg Roll</h3></Card.Title></td>
-          <td><Card style={{width: '30rem'}}  className='box'>
-          <Card.Img variant='top'  src={money} />
-          </Card>
-          <Card.Title><h3 >Egg Roll</h3></Card.Title></td>
-        </tr>
-        
-      </tbody>
+      {renderList(profile.day_plans)}
     </Table>
 
     </>

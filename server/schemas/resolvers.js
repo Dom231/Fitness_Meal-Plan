@@ -11,7 +11,11 @@ const  resolvers = {
     Query : {
         me: async (parent, args, context) => {
             if (context.user) {
-              const userData = await Profile.findOne({ _id: context.user._id });
+              const userData = await Profile.findOne({ _id: context.user._id }).populate('day_plans')
+              .populate({
+                path: 'day_plans',
+                populate: 'breakfast lunch dinner'
+              });
               return userData;
             }
             throw new AuthenticationError('You need to be logged in!');
@@ -106,17 +110,51 @@ const  resolvers = {
         throw new AuthenticationError('Not logged in');
       },
       
-      addDayPlan: async (parent, {title, breakfast, lunch, dinner}, context) => {
+      addDayPlan: async (parent, args, context) => {
+       // console.log(args);
+        const {title} = args;
         if(context.user){
-          const dayPlan = new DayMealPlan({ title, breakfast, lunch, dinner});
+          const breakfast =  await new Meal(args.breakfast).save();
+          const lunch = await new Meal(args.lunch).save();
+          const dinner =  await new Meal(args.dinner).save();
+          const newPlan = {
+            title,
+            breakfast: breakfast._id,
+            lunch: lunch._id,
+            dinner: dinner._id
+          };
+          const dayPlan = new DayMealPlan(newPlan);
+          dayPlan.save();
+
+          console.log('the plan', dayPlan);
       
-          await Profile.findOneAndUpdate({_id:context.user._id}, {
-            $addToSet: { day_plans: dayPlan} 
+          const profile = await Profile.findOneAndUpdate({_id:context.user._id}, {
+            $addToSet: { day_plans: dayPlan._id} 
           }, 
           { new: true}
-          ).populate("day_plans");
+          )
+          .populate('day_plans')
+          .populate({
+            path: 'day_plans',
+            populate: 'breakfast lunch dinner'
+          });
+         
+            //[
+    //         {
+    //         path: 'day_plans',
+    //         populate: 'breakfast' 
+    //     },{
+    //       path: 'day_plans',
+    //       populate: 'lunch'
+    //   },{
+    //     path: 'day_plans',
+    //     populate: 'dinner'
+    // }
+          //]
+          ;
+         // );
       
-          return dayPlan
+          return profile;
         }
       
         throw new AuthenticationError('Not logged in');

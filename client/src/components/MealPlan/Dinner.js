@@ -49,7 +49,7 @@ const Dinner = () => {
         while (newT.className!=="tabs d-flex toppull col") {
             newT = newT.parentElement
         }
-        
+        console.log("newT", newT)
         if (newT.style.backgroundColor == "green") {
             newT.style.backgroundColor = "white";
             let meal = {
@@ -62,7 +62,7 @@ const Dinner = () => {
                 image: null
             }
             console.log(meal);
-            addDinner(meal);
+            await addDinner(meal);
         } else {
             newT.style.backgroundColor = "green"
             let meal = {
@@ -75,7 +75,6 @@ const Dinner = () => {
                 image: newT.dataset.image
             }
             console.log(meal);
-            addDinner(meal);
 
             //run mutation to add profile
             //redirect profile page
@@ -84,12 +83,11 @@ const Dinner = () => {
                     title: "New Plan",
                     breakfast: workingBreakfast,
                     lunch: workingLunch,
-                    dinner: workingDinner
+                    dinner: meal
                 }, 
             });
 
             console.log(mdata);
-            navigate('/me');
         }
 
 
@@ -120,7 +118,7 @@ const Dinner = () => {
             data-protein={card.protein}
             data-carb={card.carbs}
             data-fat={card.fat}
-            data-id={index} onClick={handleClick}>
+            data-id={card.id} onClick={handleClick}>
                 <Card style={{width: '30rem'}}  className='box'>
                     <Card.Img variant='top'  src={card.image} />
                     <Card.Body>
@@ -139,7 +137,7 @@ const Dinner = () => {
     };
     for (const key in obj.mealsFiltered) {
         const element=obj.mealsFiltered[key];
-        list.push(renderCard(element, element.id));
+        list.push(renderCard(element, element._id));
     }
     return list;
     }
