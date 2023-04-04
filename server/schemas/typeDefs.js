@@ -18,7 +18,7 @@ type Meal {
 
 type DayMealPlan {
     _id: ID
-    tile: String
+    title: String
     breakfast: Meal
     lunch: Meal 
     dinner: Meal 
