@@ -38,3 +38,39 @@ export const UPDATE_USER = gql`
     }
   }
 `
+
+export const ADD_DAYPLAN= gql `
+mutation addDayPlan($title: String!, $breakfast: MealInput!, $lunch: MealInput!, $dinner: MealInput!) {
+  addDayPlan(title: $title, breakfast: $breakfast, lunch: $lunch, Dinner: $dinner) {
+    day_plans {
+      breakfast {
+        id
+        calories
+        carbs
+        fat
+        image
+        protein
+        title
+      }
+      dinner {
+        id
+        calories
+        carbs
+        fat
+        image
+        protein
+        title
+      }
+      lunch {
+        id
+        calories
+        carbs
+        fat
+        image
+        protein
+        title
+      }
+    }
+  }
+}
+`

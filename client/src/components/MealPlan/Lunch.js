@@ -61,12 +61,12 @@ const Lunch = () => {
         } else {
             newT.style.backgroundColor = "green"
             let meal = {
-                id: newT.dataset.id,
+                id: parseInt(newT.dataset.id),
                 title: newT.dataset.title,
-                calories: newT.dataset.calorie,
-                protein: newT.dataset.protein,
-                fat: newT.dataset.fat,
-                carbs: newT.dataset.carb,
+                calories: parseInt(newT.dataset.calorie),
+                protein: parseInt(newT.dataset.protein),
+                fat: parseInt(newT.dataset.fat),
+                carbs: parseInt(newT.dataset.carb),
                 image: newT.dataset.image
             }
             console.log(meal);
