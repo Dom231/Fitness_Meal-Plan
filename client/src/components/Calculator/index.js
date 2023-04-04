@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';  
 import './cal.css';
 
-function Calculator() {
+const Calculator = (props) => {
   const { loading, data } = useQuery(QUERY_ME);
   const profile = data?.me || {};
   useEffect(() => {
