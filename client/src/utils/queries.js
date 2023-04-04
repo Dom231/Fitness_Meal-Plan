@@ -30,9 +30,33 @@ export const QUERY_ME = gql`
             fat_goal
             day_plans {
                 title
-                breakfast{
-                    title
+                breakfast {
+                  id
+                  calories
+                  carbs
+                  fat
+                  image
+                  protein
+                  title
                 }
+                lunch {
+                  id
+                  calories
+                  carbs
+                  fat
+                  image
+                  protein
+                  title
+                }
+                dinner {
+                    id
+                    calories
+                    carbs
+                    fat
+                    image
+                    protein
+                    title
+                  }
             }
         }
     }

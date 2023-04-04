@@ -15,7 +15,6 @@ import { QUERY_ME } from '../../utils/queries';
 
 
 
-
 const Breakfast = () => {
     const {goals, lunchGoalNeeds, dinnerGoalNeeds, unsavedCalcInfo, workingBreakfast, workingLunch, workingDinner, addGoals, addLunchGoalNeeds, addDinnerGoalNeeds, addUnsavedCalcInfo, addBreakfast, addLunch, addDinner} = useMealContext();
     const {loading, data} = useQuery(
@@ -67,7 +66,7 @@ const Breakfast = () => {
                 image: newT.dataset.image
             }
             console.log(meal);
-            addBreakfast(meal);
+            await addBreakfast(meal);
 
             let newGoals = {
                 calories: goals.calories - meal.calories,
@@ -76,7 +75,7 @@ const Breakfast = () => {
                 fat: goals.fat - meal.fat
             }
             console.log("breakfast newGoals",newGoals);
-            addLunchGoalNeeds(newGoals);
+            await addLunchGoalNeeds(newGoals);
         }
         //create meal obj with data info
         // let meal = {
@@ -105,7 +104,7 @@ const Breakfast = () => {
             data-protein={card.protein}
             data-carb={card.carbs}
             data-fat={card.fat}
-            data-id={index} onClick={handleClick}>
+            data-id={card.id} onClick={handleClick}>
                 <Card style={{width: '30rem'}}  className='box'>
                     <Card.Img variant='top'  src={card.image} />
                     <Card.Body>
@@ -124,7 +123,7 @@ const Breakfast = () => {
     };
     for (const key in obj.meals) {
         const element=obj.meals[key];
-        list.push(renderCard(element, element.id));
+        list.push(renderCard(element, element._id));
     }
     return list;
     }

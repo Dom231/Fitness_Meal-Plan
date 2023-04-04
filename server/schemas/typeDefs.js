@@ -63,7 +63,7 @@ type Mutation {
     login(email: String!, password: String!): Auth
     addProfile(username: String!, email: String!, password: String!): Auth
 
-    addDayPlan(title: String!, breakfast: MealInput!, lunch: MealInput!, Dinner: MealInput!): Profile
+    addDayPlan(title: String!, breakfast: MealInput!, lunch: MealInput!, dinner: MealInput!): Profile
     updateProfile(_id:ID!, calorie_goal: Int, body_weight: Int, height: Int, age: Int, activityLevel: String, loseMaintainGain: String, protein_goal: Int, carb_goal: Int, fat_goal: Int): Profile
     addMeal(id: Int!, title: String!, calories: Int!, fat: Int!, protein: Int!, carbs: Int!, image: String! ):Profile
     removeDayPlan(_id: ID!):Profile
