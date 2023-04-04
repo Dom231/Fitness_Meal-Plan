@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 
-function Signmeup() {
+const Signmeup = (props) => {
 
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');

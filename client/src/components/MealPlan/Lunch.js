@@ -57,7 +57,7 @@ const Lunch = () => {
                 image: null
             }
             console.log(meal);
-            addLunch(meal);
+            await addLunch(meal);
         } else {
             newT.style.backgroundColor = "green"
             let meal = {
@@ -70,7 +70,7 @@ const Lunch = () => {
                 image: newT.dataset.image
             }
             console.log(meal);
-            addLunch(meal);
+            await addLunch(meal);
             let newGoals = {
                 calories: lunchGoalNeeds.calories - meal.calories,
                 protein: lunchGoalNeeds.protein - meal.protein,
@@ -78,7 +78,7 @@ const Lunch = () => {
                 fat: lunchGoalNeeds.fat - meal.fat
             }
             console.log("after lunch",newGoals)
-            addDinnerGoalNeeds(newGoals);
+            await addDinnerGoalNeeds(newGoals);
         }
         //create meal obj with data info
         // let meal = {
@@ -107,7 +107,7 @@ const Lunch = () => {
             data-protein={card.protein}
             data-carb={card.carbs}
             data-fat={card.fat}
-            data-id={index} onClick={handleClick}>
+            data-id={card.id} onClick={handleClick}>
                 <Card style={{width: '30rem'}}  className='box'>
                     <Card.Img variant='top'  src={card.image} />
                     <Card.Body>
@@ -126,7 +126,7 @@ const Lunch = () => {
     };
     for (const key in obj.mealsFiltered) {
         const element=obj.mealsFiltered[key];
-        list.push(renderCard(element, element.id));
+        list.push(renderCard(element, element._id));
     }
     return list;
     }

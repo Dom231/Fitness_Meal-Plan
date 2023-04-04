@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';  
 import './cal.css';
 
-function Calculator() {
+const Calculator = (props) => {
   const { loading, data } = useQuery(QUERY_ME);
   const profile = data?.me || {};
   useEffect(() => {
@@ -172,12 +172,6 @@ function Calculator() {
       carbs: carbGoal,
       fat: fatGoal
     });
-    await addCurrentGoalNeeds({
-      calories: calGoal,
-      protein: proteinGoal,
-      carbs: carbGoal,
-      fat: fatGoal
-    });
     
     const token = Auth.loggedIn();
     if (token) {
@@ -196,6 +190,7 @@ function Calculator() {
         }
       });
       console.log("mdata",mdata.data.updateProfile);
+      document.location.reload();
     } else {
       console.log('not logged in');
     }

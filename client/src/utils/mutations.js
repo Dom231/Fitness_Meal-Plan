@@ -41,7 +41,7 @@ export const UPDATE_USER = gql`
 
 export const ADD_DAYPLAN= gql `
 mutation addDayPlan($title: String!, $breakfast: MealInput!, $lunch: MealInput!, $dinner: MealInput!) {
-  addDayPlan(title: $title, breakfast: $breakfast, lunch: $lunch, Dinner: $dinner) {
+  addDayPlan(title: $title, breakfast: $breakfast, lunch: $lunch, dinner: $dinner) {
     day_plans {
       breakfast {
         id
@@ -52,7 +52,7 @@ mutation addDayPlan($title: String!, $breakfast: MealInput!, $lunch: MealInput!,
         protein
         title
       }
-      dinner {
+      lunch {
         id
         calories
         carbs
@@ -61,7 +61,7 @@ mutation addDayPlan($title: String!, $breakfast: MealInput!, $lunch: MealInput!,
         protein
         title
       }
-      lunch {
+      dinner {
         id
         calories
         carbs
